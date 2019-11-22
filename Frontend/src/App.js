@@ -7,6 +7,8 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Profile from './components/Profile'
 import CreateProject from './components/CreateProject'
+import Creation from './components/Creation'
+
 
 
 class App extends Component {
@@ -21,6 +23,8 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/CreateProject" component={CreateProject} />
+            <Route exact path="/Creation" component={Creation} />
+
 
           </div>
         </div>
