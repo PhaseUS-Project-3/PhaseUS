@@ -5,21 +5,19 @@ const Schema = mongoose.Schema
 
 // Create Sprint Schema
 const ProjectSchema = new Schema({
-  sprints: [{
-    type: String
-  },
-  //ID's
-  [{},{}],
-    //Reference
-    {}
-],
+ sprints:[{
+   sprint: { type: Schema.Types.ObjectId, ref : 'Sprint'},
+   tasks: { type: Schema.Types.ObjectId, ref : 'Task'}
+ }],
   name: {
     type: String,
     required: true
   },
   owner: {
-      user_id: String
+      type: Schema.Types.ObjectId, 
+      ref: 'User',
+      required: true
   }
-})
+},{timestamps : true})
 
 module.exports = Projects = mongoose.model('projects', ProjectSchema)

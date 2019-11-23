@@ -1,37 +1,50 @@
-var express = require('express')
-var cors = require('cors')
-var bodyParser = require('body-parser')
-var app = express()
-const mongoose = require('mongoose')
-var port = process.env.PORT || 5000
+const express = require("express");
+const app = express();
+// const methodOverride = require('method_override');
+const mongoose = require("mongoose");
+const dotenv = require("dotenv/config");
+const ejsLayouts = require("express-ejs-layouts");
+const session = require("express-session");
+const passport = require('passport');//after you session 
+const jwt = require('jsonwebtoken');
+const mongooseConnect = require('./helper/mongodb')
 
-app.use(bodyParser.json())
-app.use(cors())
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-)
- 
-const mongoURI ='mongodb+srv://abc:abc@cluster0-ar5uv.mongodb.net/DB'
-
-// 'mongodb://localhost:27017/mernloginreg'
+//Routes includes
+const projectsRoutes = require("./routes/project");
+const authRoutes = require("./routes/auth");
 
 
-mongoose
-  .connect(
-    mongoURI,
-    { useNewUrlParser: true, useUnifiedTopology: true  }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+mongoose.set('useCreateIndex', true);
 
-var Users = require('./routes/Users')
-app.use('/users', Users)
-app.use('/', (req, res)=>{
-  res.send('home route')
-})
 
-app.listen(port, function() {
-  console.log('Server is running on port: ' + port)
-})
+
+mongoose.connect(
+  process.env.DEV_DB,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("connected to mongoDB");
+  }
+);
+
+
+//create session for passport
+app.use(session({
+ secret : "test",
+ resave : false,
+ saveUninitialized : true
+}))
+app.use("/auth", authRoutes);
+app.use('/projects', passport.authenticate('jwt', {session: false}), require('./routes/project'))
+//passport ininitalied after you session is a must
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/projects", projectsRoutes);
+
+app.get("*", (req, res) => {
+  res.status(404).json({message: "Page not found"});
+});
+
+app.listen(5000, () => console.log("express running"));

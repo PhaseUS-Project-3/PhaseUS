@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "458937b2-ca70-4422-bbb8-630dd6b94c27",
+		"name": "PhaseUS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"2\",\n    \"email\": \"A@A\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "localhost:5000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"1\",\n    \"email\": \"A@A\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "localhost:5000/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Get all Projects",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"2\",\n    \"email\": \"A@A\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "localhost:5000/projects",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific project",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"2\",\n    \"email\": \"A@A\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "localhost:5000/projects/5dd99465c10bd02d947f8cd7",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"5dd99465c10bd02d947f8cd7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"new1\",\n    \"sprints\": []\n}"
+						},
+						"url": {
+							"raw": "localhost:5000/projects/newproject",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"newproject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updated a project",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newName\": \"vvv\",\n    \"sprints\": [{\"sprint\":\"5dd99465c10bd02d947f8cd7\",\"tasks\": \"5dd99465c10bd02d947f8cd7\"}]\n}"
+						},
+						"url": {
+							"raw": "localhost:5000/projects/5dd99465c10bd02d947f8cd7",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"5dd99465c10bd02d947f8cd7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updated a project Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newName\": \"vvv\",\n    \"sprints\": [{\"sprint\":\"5dd99465c10bd02d947f8cd7\",\"tasks\": \"5dd99465c10bd02d947f8cd7\"}]\n}"
+						},
+						"url": {
+							"raw": "localhost:5000/projects/5dd99465c10bd02d947f8cd7",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"5dd99465c10bd02d947f8cd7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "51e3a1f7-6d5b-426c-a547-01b951c65dfc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "cf4f82f3-1d62-49ce-9122-208a06c16432",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "07b33224-0748-43dd-8ad6-51f69d02413a",
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
