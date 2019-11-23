@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 //WE HAVE TO CHECK THIS MODEL
 
 // Create Sprint Schema
-const ProductSchema = new Schema({
+const ProjectSchema = new Schema({
   sprints: [{
     type: String
   },
@@ -22,4 +22,4 @@ const ProductSchema = new Schema({
   }
 })
 
-module.exports = Products = mongoose.model('products', ProductSchema)
+module.exports = Projects = mongoose.model('projects', ProjectSchema)
