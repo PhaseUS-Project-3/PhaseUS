@@ -30,6 +30,12 @@ p{
   margin-left: 700px;
 
 }
+#SendButton{
+  background-color:white;
+  color: black;
+  width: 30%;
+  margin-left: 6px;
+}
 .navbar-brand { 
   font-size: 40px;
   padding-top: 0;

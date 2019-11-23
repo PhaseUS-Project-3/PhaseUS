@@ -17,6 +17,9 @@ import { formatDate, parseDate } from 'react-day-picker/moment';
          from: undefined,
          to: undefined, 
           username: '',
+          collaboraor: '',
+          users: '',
+
       
         };
       }
@@ -130,9 +133,36 @@ import { formatDate, parseDate } from 'react-day-picker/moment';
 `}</style>
         </Helmet>
       </div>
+
+      <br/>
+          <p>collaboraor:</p>
+          <input
+            type='text'
+            name='collaboraor'
+            onChange={this.myChangeHandler}
+          />
+       
           <br/>
-          <input type='submit' />
-          </form>
+
+          <br/>
+          <p>Users:</p>
+          <input
+            type='text'
+            name='users'
+            onChange={this.myChangeHandler}
+          />
+       
+          <br/>
+          <br/>
+          <br/>  
+          <br/>
+          <button class="waves-effect btn-small"id="SendButton"  type="submit" name="action"> Send </button>
+          <br/>
+          <br/>
+          <br/>  
+          <br/>
+          <br/>
+           </form>
         );
       }
 }
