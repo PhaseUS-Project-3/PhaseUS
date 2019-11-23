@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import moment from 'moment';
-
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router-dom'
+
 
 import { formatDate, parseDate } from 'react-day-picker/moment';
 
@@ -17,6 +20,9 @@ import { formatDate, parseDate } from 'react-day-picker/moment';
          from: undefined,
          to: undefined, 
           username: '',
+          collaboraor: '',
+          users: '',
+
       
         };
       }
@@ -130,9 +136,53 @@ import { formatDate, parseDate } from 'react-day-picker/moment';
 `}</style>
         </Helmet>
       </div>
+
+      <br/>
+          <p>collaboraor:</p>
+          <input
+            type='text'
+            name='collaboraor'
+            onChange={this.myChangeHandler}
+          />
+       
           <br/>
-          <input type='submit' />
-          </form>
+
+          <br/>
+          <p>Users:</p>
+          <input
+            type='text'
+            name='users'
+            onChange={this.myChangeHandler}
+          />
+       
+          <br/>
+          <br/>
+          <br/>  
+          <br/>
+          <Button class="waves-effect btn-small"
+          id="backButton"         
+          variant="contained"
+          name="action">   
+          <Link to="/Project">
+            Back
+           </Link>   
+           </Button>
+
+
+          <Button 
+         variant="contained"
+         id="SendButton"
+        color="primary"
+        // className={classes.button}
+        endIcon={<Icon>send</Icon>} >
+         Send
+      </Button>
+          <br/>
+          <br/>
+          <br/>  
+          <br/>
+          <br/>
+           </form>
         );
       }
 }
