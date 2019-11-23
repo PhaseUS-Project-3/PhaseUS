@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import moment from 'moment';
-
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router-dom'
+
 
 import { formatDate, parseDate } from 'react-day-picker/moment';
 
@@ -156,7 +159,24 @@ import { formatDate, parseDate } from 'react-day-picker/moment';
           <br/>
           <br/>  
           <br/>
-          <button class="waves-effect btn-small"id="SendButton"  type="submit" name="action"> Send </button>
+          <Button class="waves-effect btn-small"
+          id="backButton"         
+          variant="contained"
+          name="action">   
+          <Link to="/Project">
+            Back
+           </Link>   
+           </Button>
+
+
+          <Button 
+         variant="contained"
+         id="SendButton"
+        color="primary"
+        // className={classes.button}
+        endIcon={<Icon>send</Icon>} >
+         Send
+      </Button>
           <br/>
           <br/>
           <br/>  

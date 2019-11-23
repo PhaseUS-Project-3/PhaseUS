@@ -27,7 +27,14 @@ p{
   color: black;
   margin-top: 80px;
   width: 30%;
-  margin-left: 700px;
+  margin-left: 500px;
+
+}
+#backButton{
+  background-color:white;
+  color: black;
+   width: 30%; 
+  margin-left: 500px;
 
 }
 #SendButton{
