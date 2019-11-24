@@ -46,7 +46,7 @@ router.post('/newtask', async (req, res) => {
 
 router.put('/:_id', async (req,res) => {
 	try{
-		let updateBody = {};
+		let updatebody = {};
 
 		const task = await Task.findByIdAndUpdate(req.params._id, updatebody);
 		if(!task){
