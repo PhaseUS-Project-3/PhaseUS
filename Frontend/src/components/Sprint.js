@@ -13,7 +13,6 @@ class Sprint extends Component {
       mySubmitHandler = (event) => {
         event.preventDefault();
    
-
       }
 
   render() {
