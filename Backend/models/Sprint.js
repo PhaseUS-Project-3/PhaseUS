@@ -5,9 +5,6 @@ const Schema = mongoose.Schema
 
 // Create Sprint Schema
 const SprintSchema = new Schema({
-  id: {
-    type: String
-  },
   users: {
     type: String,
     required: true
