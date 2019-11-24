@@ -14,9 +14,8 @@ const TaskSchema = new Schema({
   type : {
     type: String
   },
-  Sprint_id :[{ type: String,
-                Ref:{}
-}],
+  assigned_user: { type: Schema.Types.ObjectId, ref : 'User'}, 
+  sprint:{ type: Schema.Types.ObjectId, ref : 'Task'}
 })
 
 module.exports = Tasks = mongoose.model('tasks', TaskSchema)
