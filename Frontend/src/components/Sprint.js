@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
  import { Link } from 'react-router-dom'
+ import Button from '@material-ui/core/Button';
 
 class Sprint extends Component {
   constructor(props) {
@@ -27,12 +28,25 @@ class Sprint extends Component {
             type='text'
             name='sprinttname'
             onChange={this.myChangeHandler}/>
- 
-        <button class="waves-effect btn-large" id="colorButton" type="submit" name="action">
+    
+        
+        <Button class="waves-effect btn-large" id="colorButton" type="submit" name="action">
           <Link to="/createsprint">
             Create Sprint
            </Link>
-        </button> 
+        </Button> 
+        <br/>
+            <br/>
+     
+          
+            <Button class="waves-effect btn-small"
+                id="backButton"         
+                variant="contained"
+                name="action">   
+                <Link to="/Project">
+                    Projects
+                </Link>   
+            </Button>
     </form>
          
   </div>

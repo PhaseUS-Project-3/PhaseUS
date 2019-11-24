@@ -35,6 +35,13 @@ class Project extends Component {
             Create Project
            </Link>
          </button> 
+         <br/><br/>
+         <br/><br/>
+         <button class="waves-effect btn-large" id="colorButton" type="submit" name="action">
+          <Link to="/Sprint">
+            Sprints
+           </Link>
+        </button> 
      </form>
 
     </div>

@@ -73,15 +73,13 @@ const options = [
         return (
           <form id="formPosition" onSubmit={this.mySubmitHandler}>
           <h2>Sprint {this.state.username} </h2>
-          <br/>
-          <br/>
-          <p>Sprint name:</p>
+     
+          {/* <p>Sprint name:</p>
           <input
             type='text'
             name='username'
-            onChange={this.myChangeHandler} />
-       <br/>
-       <br/>
+            onChange={this.myChangeHandler} /> */}
+        <br/>
        <div class="container">
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Task</button>
            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -201,13 +199,12 @@ const options = [
       </React.Fragment>
           <br/>
           <br/>
-          <br/>  
-          <br/>
+      
       <Button class="waves-effect btn-small"
-          id="backButton"         
+          id="SendButton"         
           variant="contained"
           name="action">   
-          <Link to="/Project">
+          <Link to="/Sprint">
             Back
            </Link>   
      </Button>
@@ -217,8 +214,8 @@ const options = [
          id="SendButton"
         color="primary"
         // className={classes.button}
-        endIcon={<Icon>send</Icon>} >
-         Send
+        endIcon={<Icon>save</Icon>} >
+         Save
       </Button>
           <br/>
           <br/>
