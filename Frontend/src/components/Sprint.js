@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
  import { Link } from 'react-router-dom'
 
-class Project extends Component {
+class Sprint extends Component {
   constructor(props) {
     super(props);
  
         this.state = {
   
-         projectname: '',
+            sprinttname: '',
         }
       }
       mySubmitHandler = (event) => {
@@ -18,30 +18,28 @@ class Project extends Component {
 
   render() {
     return (
- <div className="container">
-   
-   <div className="col-sm-8 mx-auto">
+  <div className="container">
+     <div className="col-sm-8 mx-auto">
 
-     <form  onSubmit={this.mySubmitHandler}>
-            <br/><br/>
-          <p>Project Name:</p>
+   <form  onSubmit={this.mySubmitHandler}>
+             <br/> <br/>
+          <p>Sprint Name:</p>
           <input
             type='text'
-            name='projectname'
+            name='sprinttname'
             onChange={this.myChangeHandler}/>
  
         <button class="waves-effect btn-large" id="colorButton" type="submit" name="action">
-          <Link to="/sprint">
-            Create Project
+          <Link to="/createsprint">
+            Create Sprint
            </Link>
-         </button> 
-     </form>
-
-    </div>
+        </button> 
+    </form>
+         
+  </div>
  </div>
-
     )
   }
 }
 
-export default Project
+export default Sprint
