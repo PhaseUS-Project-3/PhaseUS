@@ -16,11 +16,11 @@ router.get('/', async (req,res) => {
 	}
 });
 
-router.get('/:taskId', async (req,res) => {
+router.get('/:_id', async (req,res) => {
 	try{
-		const task = await Task.findById(req.params.taskId);
+		const task = await Task.findById(req.params._id);
 		if(!task){
-			res.status(404).json({message: "Item not found"});
+			res.status(404).json({message: "Task is not found"});
 		}else{
 			res.json({task});
 		}
@@ -45,28 +45,28 @@ router.post('/newtask', async (req, res) => {
 	}
 });
 
-router.put('/:taskId', async (req,res) => {
+router.put('/:_id', async (req,res) => {
 	try{
 		let updateBody = {};
 
-		const task = await Task.findByIdAndUpdate(req.params.taskId, updatebody);
+		const task = await Task.findByIdAndUpdate(req.params._id, updatebody);
 		if(!task){
-			res.status(404).json({message: "Item not found"});
+			res.status(404).json({message: "Task is not found"});
 		}else{
-			res.json({message: "Item Updated", task});
+			res.json({message: "Task Updated", task});
 		}
 	}catch(err){
 		res.json({message: err});
 	}
 });
 
-router.delete('/:taskId', async (req,res) => {
+router.delete('/:_id', async (req,res) => {
 	try{
-		const tasks = await Task.findByIdAndDelete(req.params.taskId);
+		const tasks = await Task.findByIdAndDelete(req.params._id);
 		if(!tasks){
-			res.status(404).json({message: "Item not found"});
+			res.status(404).json({message: "Task is not found"});
 		}else{
-			res.json({message: "Item Deleted", tasks});
+			res.json({message: "Task Deleted", tasks});
 		}
 	}catch(err){
 		res.json({message: err});
