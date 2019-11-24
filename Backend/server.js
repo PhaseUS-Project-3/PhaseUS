@@ -38,6 +38,7 @@ app.use(session({
 }))
 app.use("/auth", authRoutes);
 app.use('/projects', passport.authenticate('jwt', {session: false}), require('./routes/project'))
+app.use('/task', passport.authenticate('jwt', {session: false}), require('./routes/task'))
 //passport ininitalied after you session is a must
 app.use(passport.initialize());
 app.use(passport.session());

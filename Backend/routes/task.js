@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const getUserId = require("../auth/utils");
-//const task
 const Task = require("../models/Task")
 
 // Comes from TaskSchema 
@@ -10,7 +9,7 @@ const Task = require("../models/Task")
 router.get('/', async (req,res) => {
 	try{
 		const tasks = await Task.find()
-		res.json({tasks});
+        res.json({tasks});
 	}catch(err){
 		res.json({message: err});
 	}
@@ -35,8 +34,8 @@ router.post('/newtask', async (req, res) => {
             name: req.body.name,
             description: req.body.description,
             type: req.body.type,
-            assigned_user: req.body.assigned_user,
-            sprint: req.body.sprint
+            assigned_user: getUserId(req),
+            // sprint: req.body.sprint
 		})
 		savedTask = await newTask.save();
 		res.redirect("/task")
