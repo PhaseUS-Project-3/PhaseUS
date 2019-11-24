@@ -12,6 +12,7 @@ const mongooseConnect = require('./helper/mongodb')
 //Routes includes
 const projectsRoutes = require("./routes/project");
 const authRoutes = require("./routes/auth");
+const taskRoutes = require("./routes/task")
 
 
 app.use(express.json());
@@ -42,6 +43,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/projects", projectsRoutes);
+
+
+//connect task route
+app.use("/task", taskRoutes);
+
 
 app.get("*", (req, res) => {
   res.status(404).json({message: "Page not found"});
