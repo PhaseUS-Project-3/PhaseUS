@@ -30,7 +30,7 @@ router.get('/:projectId', async (req,res) => {
 //create a project
 router.post('/newproject', async (req, res) => {
 	try{
-		const userId = getUserId(req);
+		const userId = "123456789012345678901234" //getUserId(req);
 		let newProject = new Projects({
 			name: req.body.name,
 			owner: userId,

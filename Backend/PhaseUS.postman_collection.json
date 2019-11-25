@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "458937b2-ca70-4422-bbb8-630dd6b94c27",
+		"_postman_id": "cf5a53b0-9817-41b3-aadb-28c93cee3e63",
 		"name": "PhaseUS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -68,7 +68,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Projects",
@@ -253,7 +254,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Sprints",
@@ -269,10 +271,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "localhost:5000/projects/5dd996f1fd9adb1c507c5c50/sprints",
 							"host": [
@@ -299,10 +297,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "localhost:5000/projects/5dd996f1fd9adb1c507c5c50/sprints/",
 							"host": [
@@ -339,8 +333,93 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update a sprint",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"newName\" : \"updated Name\",\n\"newStartDate\" : \"2019-03-17 11:59\",\n\"newEndDate\" : \"2020-03-17 11:59\",\n\"newTask\": \"123456789012345678901234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/projects/5ddbaa4b0b7a9d63ae44a972/sprints/5ddbde123a925f71e6c6a4c9",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"5ddbaa4b0b7a9d63ae44a972",
+								"sprints",
+								"5ddbde123a925f71e6c6a4c9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a sprint",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"newName\" : \"updated Name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/projects/5ddbaa4b0b7a9d63ae44a972/sprints/5ddbde123a925f71e6c6a4c9",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"5ddbaa4b0b7a9d63ae44a972",
+								"sprints",
+								"5ddbde123a925f71e6c6a4c9"
+							]
+						}
+					},
+					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -370,10 +449,11 @@
 	],
 	"variable": [
 		{
-			"id": "7e80278d-7090-4c9f-a505-f3f4ad01e9e0",
+			"id": "3c51da19-8ae6-4f11-97c3-57af327aedb3",
 			"key": "authToken",
 			"value": "",
 			"type": "string"
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
