@@ -12,7 +12,7 @@ class Landing extends Component {
     <div class="row">
       <div class="col text-center">
          <h4>
-        <h1>PhaseUs</h1> lets you work more collaboratively and get more done. <br/>
+        <h1>PhaseUs</h1> lets you work more collaboratively and get more done.<br/>
 PhasesUs’s boards, lists, and cards enable you to organize and prioritize your projects in a fun, flexible, and rewarding way.<br/><br/></h4>
        </div>
     </div>
