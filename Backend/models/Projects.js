@@ -7,7 +7,7 @@ const Schema = mongoose.Schema
 const ProjectSchema = new Schema({
  sprints:[{
    sprint: { type: Schema.Types.ObjectId, ref : 'Sprint'},
-   tasks: { type: Schema.Types.ObjectId, ref : 'Task'}
+   tasks: [{ type: Schema.Types.ObjectId, ref : 'Task'}]
  }],
   name: {
     type: String,

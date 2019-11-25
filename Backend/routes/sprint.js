@@ -40,8 +40,12 @@ router.post('/newsprint', async (req, res) => {
 			end_date: Date("2017-03-17 11:59"),
 			project_id: projectId
 		});
+		const project = await Projects.update({ _id: projectId },{ $push: { sprint: newSprint._id, tasks: [] } });
+		if(!project.nMatched){
+			res.status(404).json({message: "Project not found"});
+		}
 		let savedSprint = await newSprint.save();
-		const project = await Projects.update({ _id: projectId },{ $push: { sprint: savedSprint.id } });
+
 		res.redirect("/projects/"+projectId+"/sprints")
 
 });
@@ -49,18 +53,18 @@ router.post('/newsprint', async (req, res) => {
 router.put('/:sprintId', async (req,res) => {
 	try{
 		let updateBody = {};
-
-		updatebody = req.body.newName? updateBody.name = req.body.newName: updateBody;
+		//Does set to all data -- fix
+		req.body.newName? updateBody.name = req.body.newName: updateBody;
 
 		//update date
-		updatebody = req.body.newStartDate? updateBody.start_date = req.body.newStartDate: updateBody;
-		updatebody = req.body.newEndDate? updateBody.end_date = req.body.newEndDate: updateBody;
+		req.body.newStartDate? updateBody.start_date = req.body.newStartDate: updateBody;
+		req.body.newEndDate? updateBody.end_date = req.body.newEndDate: updateBody;
 		
 		//update user
-		updatebody = req.body.newUsers? updateBody.users = req.body.newUsers: updateBody;
+		req.body.newUsers? updateBody.users = req.body.newUsers: updateBody;
 
 		//update task
-		taskUpdate = req.body.newTask? updateBody.tasks = req.body.newTask: undefined;
+		req.body.newTask? updateBody.tasks = req.body.newTask: updateBody;
 
 		const update = taskUpdate !== undefined? { $push: { tasks: taskUpdate }, updateBody } : {$set: updateBody}
 		const path = req.originalUrl.split('/sprints/')
@@ -103,17 +107,13 @@ router.delete('/:sprintId', async (req,res) => {
 		const path = req.originalUrl.split('/sprints/')
 		const sprintId = path[1]
 		const projectId = path[0].match(/[0-9A-Fa-f]{24}/)[0];
-		console.log("before remove")
 
-		await Sprints.remove(
+		const sprint = await Sprints.remove(
 			{_id: sprintId},
 			{$eq : ["project_id", projectId]}
 		)
-		console.log("after remove")
-		const sprint = await Sprints.find();
-		//res.json(sprint)
 
-		if(!sprint){
+		if(!sprint.nRemoved){
 			res.status(404).json({message: "Item not found"});
 		}
 		else {

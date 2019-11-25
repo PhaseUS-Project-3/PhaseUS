@@ -52,8 +52,8 @@ router.put('/:projectId', async (req,res) => {
 	try{
 		let updateBody = {};
 
-		updatebody = req.body.newName? updateBody.name = req.body.newName: updateBody;
-		updatebody = req.body.sprints? updateBody.sprints = req.body.sprints: updateBody;
+		req.body.newName? updateBody.name = req.body.newName: updateBody;
+		req.body.sprints? updateBody.sprints = req.body.sprints: updateBody;
 		const project = await Projects.findByIdAndUpdate(req.params.projectId, updateBody);
 		if(!project){
 			res.status(404).json({message: "Item not found"});
