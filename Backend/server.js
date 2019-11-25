@@ -11,6 +11,7 @@ const mongooseConnect = require('./helper/mongodb')
 
 //Routes includes
 const projectsRoutes = require("./routes/project");
+const sprintsRoutes = require("./routes/sprint");
 const authRoutes = require("./routes/auth");
 
 
@@ -36,12 +37,15 @@ app.use(session({
  saveUninitialized : true
 }))
 app.use("/auth", authRoutes);
-app.use('/projects', passport.authenticate('jwt', {session: false}), require('./routes/project'))
+app.use('/projects', passport.authenticate('jwt', {session: false}), require('./routes/project'));
+app.use('/projects/:id/sprints/', passport.authenticate('jwt', {session: false}), require('./routes/sprint'))
+
 //passport ininitalied after you session is a must
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/projects", projectsRoutes);
+app.use("/projects/:id/sprints/", sprintsRoutes);
 
 app.get("*", (req, res) => {
   res.status(404).json({message: "Page not found"});

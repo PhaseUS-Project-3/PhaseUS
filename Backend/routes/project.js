@@ -30,12 +30,18 @@ router.get('/:projectId', async (req,res) => {
 //create a project
 router.post('/newproject', async (req, res) => {
 	try{
+		const userId = getUserId(req);
 		let newProject = new Projects({
 			name: req.body.name,
-			owner: getUserId(req),
+			owner: userId,
 			sprints: req.body.sprints
-		})
+		});
 		savedProject = await newProject.save();
+		await Users.update(
+			{ _id: userId },
+			{ $push: { projects: savedProject._id } }
+			);
+		console.log(savedProject)
 		res.redirect("/projects")
 	}catch(err){
 		res.json({message: err});
@@ -48,8 +54,7 @@ router.put('/:projectId', async (req,res) => {
 
 		updatebody = req.body.newName? updateBody.name = req.body.newName: updateBody;
 		updatebody = req.body.sprints? updateBody.sprints = req.body.sprints: updateBody;
-		console.log(req.body.newName, updateBody)
-		const project = await Projects.findByIdAndUpdate(req.params.projectId, updatebody);
+		const project = await Projects.findByIdAndUpdate(req.params.projectId, updateBody);
 		if(!project){
 			res.status(404).json({message: "Item not found"});
 		}else{
