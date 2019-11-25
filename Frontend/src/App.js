@@ -8,8 +8,10 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import CreateProject from './components/CreateProject'
 import Project from './components/Project'
+import ProjectPhase from './components/ProjectPhase'
 
-
+import sprint from './components/SprintS'
+import SprintS from './components/SprintS'
 
 class App extends Component {
   render() {
@@ -24,13 +26,18 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/CreateProject" component={CreateProject} />
             <Route exact path="/Project" component={Project} />
-
+            <Route exact path="/ProjectPhase" component={ProjectPhase} />
+            <Route exact path="/sprint" component={SprintS} />
 
           </div>
         </div>
+ 
       </Router>
+     
+    
     )
-  }
+    
+    }
 }
 
 export default App

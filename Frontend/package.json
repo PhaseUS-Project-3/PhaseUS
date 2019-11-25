@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.7.0",
     "axios": "^0.18.0",
+    "dragula": "^3.7.2",
     "jwt-decode": "^2.2.0",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
@@ -13,6 +14,8 @@
     "react-day-picker": "^7.4.0",
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.1",
+    "react-kanban": "^0.1.0",
+    "react-kanban-dnd": "^0.3.0",
     "react-moment": "^0.9.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5"

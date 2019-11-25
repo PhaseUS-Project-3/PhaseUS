@@ -175,7 +175,9 @@ import { formatDate, parseDate } from 'react-day-picker/moment';
         color="primary"
         // className={classes.button}
         endIcon={<Icon>send</Icon>} >
+          <Link to="/ProjectPhase">
          Send
+         </Link>
       </Button>
           <br/>
           <br/>
