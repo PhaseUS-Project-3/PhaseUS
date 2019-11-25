@@ -4,6 +4,10 @@ const Schema = mongoose.Schema
 //WE HAVE TO CHECK THIS MODEL
 // Create Schema
 const TaskSchema = new Schema({
+  sprint_id: {
+    type: Schema.Types.ObjectId,
+    ref: "Sprint"
+  },
   name: {
     type: String,
     required: true
@@ -14,8 +18,12 @@ const TaskSchema = new Schema({
   type : {
     type: String
   },
+  status:{
+    type: Boolean,
+    required: true,
+    default: "Task"
+  },
   assigned_user: { type: Schema.Types.ObjectId, ref : 'User'}, 
-  sprint:{ type: Schema.Types.ObjectId, ref : 'Task'}
 })
 
 module.exports = Tasks = mongoose.model('tasks', TaskSchema)
