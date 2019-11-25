@@ -214,6 +214,7 @@ const options = [
          id="SendButton"
         color="primary"
         // className={classes.button}
+
         endIcon={<Icon>save</Icon>} >
          Save
       </Button>

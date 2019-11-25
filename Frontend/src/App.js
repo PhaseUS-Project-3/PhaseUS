@@ -8,6 +8,9 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import CreateSprint from './components/CreateSprint'
 import Project from './components/Project'
+import ProjectPhase from './components/ProjectPhase'
+
+import SprintS from './components/SprintS'
 import Sprint from './components/Sprint'
 
 
@@ -24,15 +27,21 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/CreateSprint" component={CreateSprint} />
             <Route exact path="/Project" component={Project} />
+            <Route exact path="/ProjectPhase" component={ProjectPhase} />
+            <Route exact path="/sprint" component={SprintS} />
             <Route exact path="/Sprint" component={Sprint} />
 
 
 
           </div>
         </div>
+ 
       </Router>
+     
+    
     )
-  }
+    
+    }
 }
 
 export default App
