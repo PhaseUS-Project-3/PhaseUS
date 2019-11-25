@@ -5,14 +5,22 @@ const Schema = mongoose.Schema
 
 // Create Sprint Schema
 const SprintSchema = new Schema({
-  users: {
-    type: String,
-    required: true
+  project_id:{
+    type: Schema.Types.ObjectId,
+    ref: "Projects"
   },
+  users: [{
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }],
   name: {
     type: String,
     required: true
   },
+  tasks: [{
+    type: Schema.Types.ObjectId,
+    ref: "Task"
+  }],
   start_date: {
     type: Date,
     required: true
