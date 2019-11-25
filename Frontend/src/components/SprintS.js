@@ -35,7 +35,7 @@ export default class SprintS extends Component {
 			<tr>
 				<td>Michael Jones</td>
  				<td class="text-right">
-					<button class="button tiny">Edit</button>
+					<button class="button alert tiny" >Edit</button>
 					<button class="button alert tiny">Delete</button>			
 				</td>
 			</tr>
@@ -43,7 +43,7 @@ export default class SprintS extends Component {
 				<td>Michael Jones</td>
 		 
 				<td class="text-right">
-					<button class="button tiny">Edit</button>
+        <button class="button alert tiny" >Edit</button>
 					<button class="button alert tiny">Delete</button>			
 				</td>
 			</tr>
@@ -51,7 +51,7 @@ export default class SprintS extends Component {
 				<td>Michael Jones</td>
 	 
 				<td class="text-right">
-					<button class="button tiny">Edit</button>
+        <button class="button alert tiny" >Edit</button>
 					<button class="button alert tiny">Delete</button>			
 				</td>
 			</tr>
@@ -59,7 +59,7 @@ export default class SprintS extends Component {
 				<td>Michael Jones</td>
 		 
 				<td class="text-right">
-					<button class="button tiny">Edit</button>
+        <button class="button alert tiny" >Edit</button>
 					<button class="button alert tiny">Delete</button>			
 				</td>
 			</tr>
@@ -67,7 +67,7 @@ export default class SprintS extends Component {
 				<td>Michael Jones</td>
 			 
 				<td class="text-right">
-					<button class="button tiny">Edit</button>
+        <button class="button alert tiny" >Edit</button>
 					<button class="button alert tiny">Delete</button>			
 				</td>
 			</tr>
@@ -75,7 +75,7 @@ export default class SprintS extends Component {
 				<td>Michael Jones</td>
 		 
 				<td class="text-right">
-					<button class="button tiny">Edit</button>
+        <button class="button alert tiny" >Edit</button>
 					<button class="button alert tiny">Delete</button>			
 				</td>
 			</tr>
@@ -99,7 +99,7 @@ export default class SprintS extends Component {
 				<td>Michael Jones</td>
  
 				<td class="text-right">
-					<button class="button alrt tiny">Edit</button>
+					<button class="button alrt tiny" >Edit</button>
 					<button class="button alert tiny">Delete</button>			
 				</td>
 			</tr>
