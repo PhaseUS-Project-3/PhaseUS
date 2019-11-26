@@ -60,7 +60,7 @@ class Landing extends Component {
         <div
           className="collapse navbar-collapse justify-content-md-center"
           id="navbarsExample10"
-        >          <Navbar.Brand class="navbar-brand"> PhaseUs </Navbar.Brand> 
+        >          <Navbar.Brand className="navbar-brand"> PhaseUs </Navbar.Brand> 
 
           <ul className="navbar-nav">
 

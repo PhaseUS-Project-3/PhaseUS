@@ -10,7 +10,6 @@ import CreateSprint from './components/CreateSprint'
 import Project from './components/Project'
 import Sprint from './components/Sprint'
 
-
 class App extends Component {
   render() {
     return (

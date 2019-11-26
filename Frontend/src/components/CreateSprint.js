@@ -11,22 +11,21 @@ import Select from 'react-select';
 
 import { formatDate, parseDate } from 'react-day-picker/moment';
 
-const options = [
-  { value: 'a', label: 'a' },
-  { value: 'b', label: 'b' },
-];
+ 
+const users = [  { value: 'a', label: 'a' },
+ { value: 'b', label: 'b' },]
 
  class CreateProject extends Component {
     constructor(props) {
     super(props);
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
+    this.mySubmitHandler = this.mySubmitHandler.bind(this);
+    this.taskSubmit = this.taskSubmit.bind(this);
 
         this.state = {
          from: undefined,
          to: undefined, 
-          username: '',
-          collaboraor: '',
           task: '',
           description:'',
           type:'',
@@ -34,20 +33,38 @@ const options = [
 
       
         };
+  
       }
 
       mySubmitHandler = (event) => {
         event.preventDefault();
-  
+        console.log(event)
+        this.setState({
+           from: event.target.value ,
+           to: event.target.value  , 
+           selectedOptions: users,
+        
+        })
+
       }
+      taskSubmit = (event) => {
+        event.preventDefault();
+        console.log(event)
+        this.setState({
+          
+           task: event.target.value  ,
+           description:event.target.value  ,
+           type:event.target.value ,
+        
+        })
+
+      }
+
+
       handleChange = (selectedOptions) => {
         this.setState({ selectedOptions });
       }
-      myChangeHandler = (event) => {
-        let nam = event.target.name;
-        let val = event.target.value;
-        this.setState({[nam]: val});
-      }
+   
       showFromMonth() {
         const { from, to } = this.state;
         if (!from) {
@@ -70,54 +87,53 @@ const options = [
         const { selectedOption } = this.state;
         const { from, to } = this.state;
         const modifiers = { start: from, end: to };
+
+
         return (
           <form id="formPosition" onSubmit={this.mySubmitHandler}>
-          <h2>Sprint {this.state.username} </h2>
+          <h2>Sprint </h2>
      
-          {/* <p>Sprint name:</p>
-          <input
-            type='text'
-            name='username'
-            onChange={this.myChangeHandler} /> */}
+      {/* Pop Up */}
         <br/>
-       <div class="container">
-         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Task</button>
-           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLabel">New Task</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+       <div className="container">
+         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Task</button>
+           <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                   <h5 className="modal-title" id="exampleModalLabel">New Task</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                  </div>
-              <div class="modal-body">
+              <div className="modal-body">
                <form>
-                 <div class="form-group">
-                   <label for="recipient-name" class="col-form-label">Task:</label>
-                   <input type="text" class="form-control" id="recipient-name"/>
+                 <div className="form-group">
+                   <label for="recipient-name" className="col-form-label">Task:</label>
+                   <input type="text" className="form-control" name="task"/>
                  </div>
 
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Description:</label>
-                  <input type="text" class="form-control" id="recipient-name"/>
+                <div className="form-group">
+                  <label for="recipient-name" className="col-form-label">Description:</label>
+                  <input type="text" className="form-control" name="description"/>
                 </div>
 
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Type:</label>
-                  <textarea class="form-control" id="message-text"></textarea>
+                <div className="form-group">
+                  <label for="message-text" className="col-form-label">Type:</label>
+                  <textarea className="form-control" name="type"></textarea>
                 </div>
               </form>
           </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> <br/>
-                  <button type="button" class="btn btn-primary">Save</button>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button> <br/>
+                  <button type="submit" className="btn btn-primary" onSubmit={this.taskSubmit}>Save</button>
                 </div>
             </div>
           </div>
       </div>
    </div>
- 
+ {/* end pop up */}
+
 <br/>
 <br/>
       
@@ -194,13 +210,13 @@ const options = [
         isMulti
         value={selectedOption}
         onChange={this.handleChange}
-        options={options}/>
+        options={users}/>
       {/* {this.state.selectedOptions.map(o => <p>{o.value}</p>)} */}
       </React.Fragment>
           <br/>
           <br/>
       
-      <Button class="waves-effect btn-small"
+      <Button className="waves-effect btn-small"
           id="SendButton"         
           variant="contained"
           name="action">   
@@ -213,6 +229,7 @@ const options = [
          variant="contained"
          id="SendButton"
         color="primary"
+        type="submit"
         // className={classes.button}
         endIcon={<Icon>save</Icon>} >
          Save

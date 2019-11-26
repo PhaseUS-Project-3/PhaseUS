@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.7.0",
     "@syncfusion/ej2-react-grids": "^17.3.28",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "jwt-decode": "^2.2.0",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
