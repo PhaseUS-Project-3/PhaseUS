@@ -12,7 +12,7 @@ class Project extends Component {
         }
         this.mySubmitHandler = this.mySubmitHandler.bind(this);
       }
-      mySubmitHandler = (event) => {
+      mySubmitHandler = async (event) => {
         event.preventDefault();
         
         console.log(event.target.children[3].value)
@@ -20,16 +20,16 @@ class Project extends Component {
         this.setState({
           projectname : event.target.children[3].value
         })
-        axios.post("localhost:5001/projects/newproject", {name: event.target.children[3].value, sprints: []}).then(res => {
+        await axios.post("http://localhost:5000/projects/newproject", {name: event.target.children[3].value, sprints: []}).then(res => {
           console.log(res)
-        })
+        }).catch(e => console.log(e))
 
       }
       componentDidMount(){
-        axios.get("localhost:5001/projects").then(res => console.log(res))
+        axios.get("localhost:5000/projects").then(res => console.log(res))
       }
       componentDidUpdate(){
-        axios.get("localhost:5001/projects").then(res => console.log(res))
+        axios.get("localhost:5000/projects").then(res => console.log(res))
       }
 
   render() {

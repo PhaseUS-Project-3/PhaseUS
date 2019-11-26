@@ -5,12 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^4.7.0",
     "@syncfusion/ej2-react-grids": "^17.3.28",
-<<<<<<< HEAD
     "axios": "^0.18.1",
-=======
-    "axios": "^0.18.0",
     "dragula": "^3.7.2",
->>>>>>> 1350bbd4326447c523a573b818ebb70381facee4
     "jwt-decode": "^2.2.0",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
@@ -32,5 +28,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:3000"
 }
