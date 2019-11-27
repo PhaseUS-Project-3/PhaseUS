@@ -1,7 +1,10 @@
  import React, { Component } from 'react'
  import {Row, Col} from 'react-bootstrap'
  import dragula from 'dragula'; 
+ import './comp.css';
+import '../App.css';
 import Axios from 'axios';
+import { textAlign } from '@material-ui/system';
  export default class ProjectPhase extends Component {
    state ={
      tasks: []
@@ -22,20 +25,21 @@ import Axios from 'axios';
  
       render () {
         return (
+         <div className="conti">
           <Row className="container">
             <Col id="left" className=" container">
             <h3>Tasks</h3>
-               {this.state.tasks.tasks?this.state.tasks.tasks.map(task => <Card body={<div><h3>{task.name}</h3><p>{task.description}</p></div>}/>):''}
+               {this.state.tasks.tasks?this.state.tasks.tasks.map(task => <Card  body={<div className="crd"><h3>{task.name}</h3><p>{task.description}</p></div>}/>):''}
             </Col>
             <Col id="center" className="container">
             <h3>Compeleted</h3>        
             </Col>
-
+        
             <Col id="right" className="container">
             <h3>In prograss</h3>             
             </Col>
-            
           </Row>
+          </div>
 
         );
       }

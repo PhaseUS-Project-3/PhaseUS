@@ -78,8 +78,8 @@ PhasesUs’s boards, lists, and cards enable you to organize and prioritize your
  
 	 
 <footer className="text-center">
-  <small>Made by <a href="https://twitter.com/thorolas_lily"  class="contact-details">.
-</a>with &hearts; </small>
+  <small>Made by #PhaseUS<a href="/"  class="contact-details">
+</a> with &hearts; </small>
 </footer>
      
       </div>

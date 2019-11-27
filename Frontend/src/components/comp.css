@@ -1,0 +1,22 @@
+.form{
+    margin-top: 150px;
+    margin-right: 400px;
+    margin-left: 400px;
+}
+
+.btnn{
+    margin: 6px;
+}
+.conti{
+    margin-right: 140px;
+    margin-left: 140px;
+}
+
+.crd h3{
+font-size: 15px;
+color: blue;
+}
+.crd p{
+    font-size: 22px;
+    font: bold;
+}

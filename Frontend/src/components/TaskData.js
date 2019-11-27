@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import './comp.css'
+import '../App.css';
 import {Form, Button} from 'react-bootstrap'
 import Axios from 'axios'
 
@@ -31,14 +33,15 @@ export default class SprintData extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="form" >
+    
                <Form onSubmit={this.submitHandler}>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Task Name</Form.Label>
-                    <Form.Control type="text" placeholder="Task name" />
+                    <Form.Label><h3>Task Name</h3></Form.Label>
+                    <Form.Control  type="text" placeholder="Task name" />
                     <Form.Text className="text-muted">
                     </Form.Text>
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label><h3>Description</h3></Form.Label>
                     <Form.Control type="text" placeholder="Description" />
                     <Form.Text className="text-muted">
                     </Form.Text>
@@ -46,13 +49,13 @@ export default class SprintData extends Component {
                 </Form.Group>
 
 
-                <Button variant="primary" onClick={this.back}>
+                <Button className="btnn" variant="primary" onClick={this.back}>
                     Back
                 </Button>
-                <Button variant="primary" type="submit">
+                <Button className="btnn" variant="primary" type="submit">
                     Add Taks
                 </Button>
-                <Button variant="primary" onClick={this.finalize} type="submit">
+                <Button className="btnn" variant="primary" onClick={this.finalize} type="submit">
                     Finalize
                 </Button>
 
