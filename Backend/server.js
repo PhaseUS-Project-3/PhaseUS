@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-var cors = require('cors')
-app.use(cors())
+var cors = require('cors');
+app.use(cors());
 // const methodOverride = require('method_override');
 const mongoose = require("mongoose");
 const dotenv = require("dotenv/config");

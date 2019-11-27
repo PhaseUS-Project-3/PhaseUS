@@ -7,6 +7,17 @@ const Users = require("../models/User");
 const getUserId = require("../auth/utils");
 
 // fetch all sprints from a specific project
+router.get("/allusers", async (req, res) => {
+  try{
+    const allusers = await User.find();
+    allusers.forEach(user => user.password = "");
+    res.json({users:allusers});
+   }catch(err){
+     res.status(401).json({ message : "Somthing happned"})
+
+   }
+})
+
 router.get('/', async (req,res) => {
 	try{
 		const projectId = req.originalUrl.match(/[0-9A-Fa-f]{24}/)[0];

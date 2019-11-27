@@ -33,6 +33,17 @@ router.get('/', (request, response, next) => {
   
 })
 
+router.get("/allusers", async (req, res) => {
+  try{
+    const allusers = await User.find();
+    allusers.forEach(user => user.password = "");
+    res.json({users:allusers});
+   }catch(err){
+     res.status(401).json({ message : "Somthing happned"})
+
+   }
+})
+
 router.post('/register', (request, response)=>{
 
   let data = {

@@ -99,7 +99,10 @@ export default class App extends React.Component {
 
             {/* {this.state.user? <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />} />: ''} */}
             <Route exact path="/profile" render={(props) => this.state.user ? <Profile {...props} user={this.state.user} />: null} />
-            <Route exact path="/projects" render={(props) => <Projects {...props} user={this.state.user} />} />           
+            <Route exact path="/projects" render={(props) => <Projects {...props} user={this.state.user} />} />
+            <Route exact path="/task" render={(props) => <Projects {...props} user={this.state.user} />} />    
+            <Route exact path="/CreateSprint" render={(props) => <Projects {...props} user={this.state.user} />} />       
+           
             <Route component={NotFoundPage} />
           </Switch>
         </div>

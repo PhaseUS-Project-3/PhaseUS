@@ -28,7 +28,7 @@ class Project extends Component {
         console.log(this.props.user)
         if(this.props.user){
           this.setState({
-            projectname: this.props.user.data.projects.name
+            projectname: this.props.user.projects.name
           })
         }
       }
