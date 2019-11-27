@@ -46,7 +46,13 @@ class Landing extends Component {
             Logout
           </a>
         </li>
+        <li className="nav-item">
+        <Link to="/project" className="nav-link">
+            Create Project
+          </Link>
+        </li>
       </ul>
+
     )
 
 
@@ -84,7 +90,6 @@ class Landing extends Component {
          
 
           {getToken()? userLink : loginRegLink}
-          {console.log(getToken())}
         </div>
       </nav>
     )
