@@ -8,7 +8,11 @@ const TaskSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Sprint"
   },
-  name: {
+  project_id: {
+    type: Schema.Types.ObjectId,
+    ref: "Projects"
+  },
+    name: {
     type: String,
     required: true
   },
@@ -17,11 +21,6 @@ const TaskSchema = new Schema({
   },
   type : {
     type: String
-  },
-  status:{
-    type: Boolean,
-    required: true,
-    default: "Task"
   },
   assigned_user: { type: Schema.Types.ObjectId, ref : 'User'}, 
 })
