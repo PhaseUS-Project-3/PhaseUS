@@ -26,7 +26,7 @@ class Login extends Component {
     }
     const isLoggedin = await this.props.loginHandler(user);
     if(isLoggedin){
-     this.props.history.push(`/projects`)
+     this.props.history.push(`/`)
  	}else{
  		console.log("in valid email or password --- replace  me with a functional design");
  	}

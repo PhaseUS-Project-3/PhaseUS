@@ -74,7 +74,7 @@ export default class App extends React.Component {
       data.isAuthenticated = true
       data.hasError = false
 
-      await this.setState(data);
+      await this.setState(data)
       return true
     }else{
       return false;
@@ -83,7 +83,7 @@ export default class App extends React.Component {
 
 
   render() {
-          console.log(this.state)
+          console.log(this.state.user)
 
     return (
       <Router>
@@ -94,7 +94,7 @@ export default class App extends React.Component {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" render={(props) => <Login {...props} loginHandler={this.loginHandler} />} />
-            <Route exact path="/profiles" render={(props) => <Profile {...props} user={this.state.user} />} />
+            {this.state.user? <Route exact path="/profiles" render={(props) => <Profile {...props} user={this.state.user} />} />: ''}
 
           </div>
           </Switch>
