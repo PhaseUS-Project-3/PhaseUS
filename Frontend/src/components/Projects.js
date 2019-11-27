@@ -33,8 +33,8 @@ class Project extends Component {
   render() {
     console.log(this.state.projectname);
     if(this.state.projecname !== ''){
-      <Link to="/sprint">
-     </Link>
+    //   <Link to="/sprint">
+    //  </Link>
     }
     return (
  <div className="container">

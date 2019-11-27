@@ -93,16 +93,14 @@ export default class App extends React.Component {
         <div className="App">
           <Navbar />
           <Switch>
-          <Route exact path="/" component={Landing} />
-          <div className="container">
+          <Route exact path="/" component={Landing} />   
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" render={(props) => <Login {...props} loginHandler={this.loginHandler} />} />
-            {this.state.user? <Route exact path="/profiles" render={(props) => <Profile {...props} user={this.state.user} />} />: ''}
-
-            <Route path="/projects" render={(props) => <Projects {...props} user={this.state.user} />} />
-            <Route path="*" component={NotFoundPage} />
-
-          </div>
+            {/* {this.state.user? <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />} />: ''} */}
+            <Route exact path="/profile" render={(props) => this.state.user ? <Profile {...props} user={this.state.user} />: null} />
+            <Route exact path="/projects" render={(props) => <Projects {...props} user={this.state.user} />} />           
+            <Route component={NotFoundPage} />
+          
           </Switch>
         </div>
       </Router>
