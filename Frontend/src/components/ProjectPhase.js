@@ -1,13 +1,23 @@
  import React, { Component } from 'react'
  import {Row, Col} from 'react-bootstrap'
  import dragula from 'dragula'; 
+import Axios from 'axios';
  export default class ProjectPhase extends Component {
+   state ={
+     tasks: []
+   }
     componentDidMount () {
         let left = document.getElementById('left');
         let right = document.getElementById('right');
         let center = document.getElementById('center');
 
         dragula([left, right, center]);
+        const projectId = this.props.match.params.projectId
+        const sprintId = this.props.match.params.sprintId
+        Axios.get("http://localhost:5000/projects/"+projectId+"/sprints/"+sprintId+"/task/").then(res =>{
+          this.setState({tasks: res.data})
+          console.log(res.data.tasks)
+    })
       }
  
       render () {
@@ -15,32 +25,14 @@
           <Row className="container">
             <Col id="left" className=" container">
             <h3>Tasks</h3>
-
-               <Card body=""/>
-               <Card body=""/>
-               <Card body=""/>  
-               <Card body=""/>
-              
-            
+               {this.state.tasks.tasks?this.state.tasks.tasks.map(task => <Card body={<div><h3>{task.name}</h3><p>{task.description}</p></div>}/>):''}
             </Col>
             <Col id="center" className="container">
-            <h3>Compeleted</h3>
-
-                <Card body=""/>
-                <Card body=""/>          
-                <Card body=""/>
-            
-              
+            <h3>Compeleted</h3>        
             </Col>
 
             <Col id="right" className="container">
-            <h3>In prograss</h3>
-
-                <Card body=""/>
-                <Card body=""/>          
-                <Card body=""/>
-            
-              
+            <h3>In prograss</h3>             
             </Col>
             
           </Row>

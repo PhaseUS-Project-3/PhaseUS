@@ -21,7 +21,7 @@ class Sprint extends Component {
         const name =  event.target.children[3].value
         axios.post("http://localhost:5000/projects/"+projectId+"/sprints/newsprint", {name: name}).then(res => {
           console.log(res)
-          this.props.history.push(`/createsprint/`+projectId+"/"+res.data._id)
+          this.props.history.push(`/taskdata/`+projectId+"/"+res.data._id)
         })
 
       }

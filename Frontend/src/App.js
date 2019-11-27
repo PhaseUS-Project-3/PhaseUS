@@ -4,14 +4,17 @@ import axios from 'axios'
 
 import { getToken, setToken, logout} from './services/auth.js'
 import Login from './Components/Login';
+// import SprintData from './Components/SprintData'
+import TaskData from './Components/TaskData'
+
 import Register from './Components/Register';
 import Landing from './Components/Landing';
+import ProjectPhase from './Components/ProjectPhase';
 import Sprint from './Components/Sprint';
 import Projects from './Components/Projects';
 import Navbar from './Components/Navbar';
 import Profile from './Components/Profile'
 import NotFoundPage from './Components/NotFoundPage';
-import CreateSprint from "./Components/CreateSprint";
 
 
 import { decode }  from 'jsonwebtoken'
@@ -119,14 +122,19 @@ export default class App extends React.Component {
 
             {/* {this.state.user? <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />} />: ''} */}
             <Route exact path="/sprint/:id" render={(props) => <Sprint {...props}/>} />
-            <Route exact path="/createsprint/:projectId/:sprintId" render={(props) => <CreateSprint {...props}/>} />
+            {/* <Route exact path="/sprintdata/:projectId/:sprintId" render={(props) => <SprintData {...props}/>} /> */}
+            <Route exact path="/taskdata/:projectId/:sprintId" render={(props) => <TaskData {...props}/>} />
+
+            <Route exact path="/projractphase/:projectId/:sprintId" render={(props) => <ProjectPhase {...props}/>} />
 
             {/* <Route exact path="/sprint" render={(props) =>this.state.currentProjectId ? <Sprint {...props} projectId={this.currentProjectId} /> : null } /> */}
             <Route exact path="/profile" render={(props) => this.state.user ? <Profile {...props} user={this.state.user} />: null} />
 
             <Route exact path="/projects" render={(props) => <Projects {...props} user={this.state.user} projectHandler={this.projectHandler}/>} />           
             {/* <Route exact path="/sprint" render={(props) => <Sprint {...props} user={this.state.user} />} />   */}
+
             <Route component={NotFoundPage} />
+            {/* <Route exact path="/sprintdata"/> */}
           </Switch>
         </div>
       </Router>

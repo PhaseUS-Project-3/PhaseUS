@@ -11,7 +11,6 @@ class ShowProject extends Component {
 				rows: []
 			}
 		}
-
 	handleDeleteRow(i) {
 		let rows = [this.state.rows]
 		rows.splice(i, 1)
@@ -22,9 +21,10 @@ class ShowProject extends Component {
 
 	  handleDel = (e) => {
 		let id = e.target.getAttribute('data-id')
-        axios.delete("http://localhost:5000/projects/"+this.props.projects[id]._id)
-        this.props.projects.splice(id, 1)
-
+		let pId = this.props.projects[id]._id
+		this.props.projects.splice(id, 1)
+		console.log(e)
+        axios.delete("http://localhost:5000/projects/"+pId)
       }
       componentDidMount(){
           this.setState({
@@ -49,9 +49,7 @@ class ShowProject extends Component {
 		{this.props.projects? this.props.projects.map((row,i) => 
 			<tr key={i}>
 				<td> {row.name} <button id="button1" data-id={i} onClick={this.handleDel}>Delete</button>
-				
-      
-				 <button id ="button2">  Edit</button></td>
+				</td>
 
 			</tr>
 			): ""}
