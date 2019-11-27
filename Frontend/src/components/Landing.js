@@ -30,15 +30,11 @@ PhasesUs’s boards, lists, and cards enable you to organize and prioritize your
       </div>
 
         <div className="col-12 col-lg-5">
-        <h2>Text Text Text Text</h2>
-        <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
+        <h2>Work with any team</h2>
+        <p>Whether it’s for work, a side project or even the next family vacation, PhaseUs helps your team stay organized.
+</p>
 
-        <ul>
-          <li>Text Text Text Text</li>
-          <li>Text Text Text Text</li>
-          <li>Text Text Text Text</li>
-          <li>Text Text Text Text</li>
-        </ul>
+  
       </div>
     </div>
   </div>
@@ -51,9 +47,8 @@ PhasesUs’s boards, lists, and cards enable you to organize and prioritize your
   <div className="container">
     <div className="row justify-content-center text-center">
       <div className="col-12 col-sm-10 col-md-8 col-lg-5">
-        <h2>Phases</h2>
-        <p>TextTextTextTextTextTextTextTextText</p>
-			</div>
+        <h2>Steps in workflow</h2>
+ 			</div>
 		  </div>
     </div>
 	 </div>
