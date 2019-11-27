@@ -97,7 +97,7 @@ export default class App extends React.Component {
             <Route exact path="/login" render={(props) => <Login {...props} loginHandler={this.loginHandler} />} />
 
             {this.state.user? <Route exact path="/profiles" render={(props) => <Profile {...props} user={this.state.user} />} />: ''}
-            <Route path="/projects" render={(props) => <Projects {...props} user={this.state.user} />} />
+            <Route exact path="/projects" render={(props) => <Projects {...props} user={this.state.user} />} />
           </div>
           </Switch>
         </div>

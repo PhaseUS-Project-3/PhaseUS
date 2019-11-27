@@ -7,7 +7,9 @@ const getUserId = require("../auth/utils");
 // fetch all projects
 router.get('/', async (req,res) => {
 	try{
-		const projects = await Projects.find()//.populate('owner');
+		const projects = await Projects.find(
+			{owner: getUserId(req)}
+		)//.populate('owner');
 		// projects.forEach(project => project.owner.password = "");
 		res.json({projects});
 	}catch(err){
@@ -17,7 +19,10 @@ router.get('/', async (req,res) => {
 // fetch specified project
 router.get('/:projectId', async (req,res) => {
 	try{
-		const project = await Projects.findById(req.params.projectId);
+		const project = await Projects.find(
+			{_id: req.params.projectId},
+			{owner: getUserId(req)}
+			);
 		if(!project){
 			res.status(404).json({message: "Item not found"});
 		}else{
