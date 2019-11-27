@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import {Navbar ,Nav} from 'react-bootstrap'
 import { getToken, logout} from '../services/auth.js'
-
-
+ 
 class Landing extends Component {
   
   constructor(props) {
@@ -51,6 +50,7 @@ class Landing extends Component {
             Create Project
           </Link>
         </li>
+        
       </ul>
 
     )
@@ -84,7 +84,7 @@ class Landing extends Component {
                 Home
               </Link>
             </li>  
-           
+
             </Nav> 
             </ul>
          
