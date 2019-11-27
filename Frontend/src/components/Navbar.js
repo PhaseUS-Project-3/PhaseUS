@@ -55,7 +55,6 @@ class Landing extends Component {
 
     )
 
-
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary rounded">
         <button

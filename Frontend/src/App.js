@@ -6,6 +6,7 @@ import { getToken, setToken, logout} from './services/auth.js'
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Landing from './Components/Landing';
+import Sprint from './Components/Sprint';
 import Projects from './Components/Projects';
 import Navbar from './Components/Navbar';
 import Profile from './Components/Profile'
@@ -100,6 +101,7 @@ export default class App extends React.Component {
             {/* {this.state.user? <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />} />: ''} */}
             <Route exact path="/profile" render={(props) => this.state.user ? <Profile {...props} user={this.state.user} />: null} />
             <Route exact path="/projects" render={(props) => <Projects {...props} user={this.state.user} />} />           
+            <Route exact path="/sprint" render={(props) => <Sprint {...props} user={this.state.user} />} />  
             <Route component={NotFoundPage} />
           </Switch>
         </div>

@@ -47,7 +47,7 @@ router.post('/newproject', async (req, res) => {
 			{ $push: { projects: savedProject._id } }
 			);
 		console.log(savedProject)
-		res.redirect("/projects")
+		res.json(savedProject)
 	}catch(err){
 		res.json({message: err});
 	}
