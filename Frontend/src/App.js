@@ -6,6 +6,7 @@ import { getToken, setToken, logout} from './services/auth.js'
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Landing from './Components/Landing';
+import Projects from './Components/Projects';
 import Navbar from './Components/Navbar';
 import Profile from './Components/Profile'
 import NotFoundPage from './Components/NotFoundPage';
@@ -97,6 +98,8 @@ export default class App extends React.Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" render={(props) => <Login {...props} loginHandler={this.loginHandler} />} />
             {this.state.user? <Route exact path="/profiles" render={(props) => <Profile {...props} user={this.state.user} />} />: ''}
+
+            <Route path="/projects" render={(props) => <Projects {...props} user={this.state.user} />} />
             <Route path="*" component={NotFoundPage} />
 
           </div>
