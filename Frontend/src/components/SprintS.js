@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+ 
 export default class SprintS extends Component {
 
   constructor(props) {
@@ -8,24 +7,20 @@ export default class SprintS extends Component {
     this.state = {
       remove: true,
     }
-    // this.mySprint = this.mySprint.bind(this);
-  }
+   }
   
 
-
-// mySprint =({onRemovemySprint}) => ({
-    
-//   })
+ 
 
     render() {
+		const pnames = ["p1", "p2", "p3", "p3"]
+
         return (
             <div>
             <div id="bodywrap">
 <div class="row">
 <div class="large-10 columns">
-  <div class="scroll-window-wrapper">
  
-	<div class="scroll-window">
 	<table class="table table-striped table-hover user-list fixed-header">
 		<thead>
 			<th><div>Sprint Name</div></th>
@@ -33,85 +28,21 @@ export default class SprintS extends Component {
 		</thead>
 		<tbody>
 			<tr>
-				<td>Michael Jones</td>
+				{pnames.map(e => <div>
+				<td>{e}</td>
  				<td class="text-right">
-					<button class="button alert tiny" >Edit</button>
-					<button class="button alert tiny">Delete</button>			
-				</td>
+         <button class="flat-butt flat-primary-butt">Edit</button>
+ <button class="flat-butt flat-danger-butt">Delete</button>				</td></div>)}
 			</tr>
-			<tr>
-				<td>Michael Jones</td>
-		 
-				<td class="text-right">
-        <button class="button alert tiny" >Edit</button>
-					<button class="button alert tiny">Delete</button>			
-				</td>
-			</tr>
-			<tr>
-				<td>Michael Jones</td>
-	 
-				<td class="text-right">
-        <button class="button alert tiny" >Edit</button>
-					<button class="button alert tiny">Delete</button>			
-				</td>
-			</tr>
-			<tr>
-				<td>Michael Jones</td>
-		 
-				<td class="text-right">
-        <button class="button alert tiny" >Edit</button>
-					<button class="button alert tiny">Delete</button>			
-				</td>
-			</tr>
-			<tr>
-				<td>Michael Jones</td>
-			 
-				<td class="text-right">
-        <button class="button alert tiny" >Edit</button>
-					<button class="button alert tiny">Delete</button>			
-				</td>
-			</tr>
-			<tr>
-				<td>Michael Jones</td>
-		 
-				<td class="text-right">
-        <button class="button alert tiny" >Edit</button>
-					<button class="button alert tiny">Delete</button>			
-				</td>
-			</tr>
-			<tr>
-				<td>Michael Jones</td>
- 
-				<td class="text-right">
-					<button class="button tiny">Edit</button>
-					<button class="button alert tiny">Delete</button>			
-				</td>
-			</tr>
-			<tr>
-				<td>Michael Jones</td>
- 
-				<td class="text-right">
-					<button class="button tiny">Edit</button>
-					<button class="button alert tiny">Delete</button>			
-				</td>
-			</tr>
-			<tr>
-				<td>Michael Jones</td>
- 
-				<td class="text-right">
-					<button class="button alrt tiny" >Edit</button>
-					<button class="button alert tiny">Delete</button>			
-				</td>
-			</tr>
+					
+			
  		</tbody>
 	</table>
 	</div>
 </div>
 </div>
 </div>
-</div>
          
-            </div>
         )
     }
 }

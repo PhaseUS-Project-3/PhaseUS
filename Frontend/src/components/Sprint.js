@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
  import { Link } from 'react-router-dom'
  import Button from '@material-ui/core/Button';
+ import SprintS from './SprintS';
 
 class Sprint extends Component {
   constructor(props) {
@@ -48,6 +49,11 @@ class Sprint extends Component {
                 </Link>   
             </Button>
     </form>
+
+
+    <SprintS/>
+
+
          
   </div>
  </div>

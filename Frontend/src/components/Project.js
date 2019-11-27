@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
  import { Link } from 'react-router-dom'
+import ShowProject from './ShowProject';
 
 class Project extends Component {
   constructor(props) {
@@ -41,8 +42,10 @@ class Project extends Component {
           <Link to="/Sprint">
             Sprints
            </Link>
+           
         </button> 
      </form>
+      <ShowProject/>
 
     </div>
  </div>

@@ -6,14 +6,13 @@ import Landing from './components/Landing'
 import Login from './components/Login'
 import Register from './components/Register'
 import Profile from './components/Profile'
-import CreateSprint from './components/CreateSprint'
+// import CreateSprint from './components/CreateSprint'
 import Project from './components/Project'
 import ProjectPhase from './components/ProjectPhase'
 
 import SprintS from './components/SprintS'
 import Sprint from './components/Sprint'
-
-
+import ShowProject from './components/ShowProject'
 class App extends Component {
   render() {
     return (
@@ -25,11 +24,13 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/CreateSprint" component={CreateSprint} />
+            {/* <Route exact path="/CreateSprint" component={CreateSprint} /> */}
             <Route exact path="/Project" component={Project} />
             <Route exact path="/ProjectPhase" component={ProjectPhase} />
-            <Route exact path="/sprint" component={SprintS} />
+            <Route exact path="/sprints" component={SprintS} />
             <Route exact path="/Sprint" component={Sprint} />
+            <Route exact path="/ShowProject" component={ShowProject} />
+
 
 
 
