@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import {Navbar ,Nav} from 'react-bootstrap'
+import { getToken, logout} from '../services/auth.js'
 
 
 class Landing extends Component {
+  
+  constructor(props) {
+    super(props)
+    this.logOut = this.logOut.bind(this)
+  }
   logOut(e) {
     e.preventDefault()
-    localStorage.removeItem('usertoken')
+    logout()
     this.props.history.push(`/`)
   }
 
@@ -36,7 +42,7 @@ class Landing extends Component {
           </Link>
         </li>
         <li className="nav-item">
-          <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+          <a href="" onClick={this.logOut} className="nav-link">
             Logout
           </a>
         </li>
@@ -60,7 +66,7 @@ class Landing extends Component {
         <div
           className="collapse navbar-collapse justify-content-md-center"
           id="navbarsExample10"
-        >          <Navbar.Brand class="navbar-brand"> PhaseUs </Navbar.Brand> 
+        >          <Navbar.Brand className="navbar-brand"> PhaseUs </Navbar.Brand> 
 
           <ul className="navbar-nav">
 
@@ -77,7 +83,8 @@ class Landing extends Component {
             </ul>
          
 
-          {localStorage.usertoken ? userLink : loginRegLink}
+          {getToken()? userLink : loginRegLink}
+          {console.log(getToken())}
         </div>
       </nav>
     )

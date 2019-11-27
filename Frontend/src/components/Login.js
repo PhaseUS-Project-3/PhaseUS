@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { login } from './UserFunctions'
+import axios from 'axios'
 
 class Login extends Component {
   constructor() {
@@ -17,20 +17,21 @@ class Login extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
-  onSubmit(e) {
+  async onSubmit(e) {
     e.preventDefault()
 
     const user = {
       email: this.state.email,
       password: this.state.password
     }
+    const isLoggedin = await this.props.loginHandler(user);
+    if(isLoggedin){
+     this.props.history.push(`/projects`)
+ 	}else{
+ 		console.log("in valid email or password --- replace  me with a functional design");
+ 	}
 
-    login(user).then(res => {
-      if (res) {
-        this.props.history.push(`/Project`)
-      }
-    })
-  }
+   }
 
   render() {
     return (

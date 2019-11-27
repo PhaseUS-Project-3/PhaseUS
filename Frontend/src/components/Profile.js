@@ -1,26 +1,27 @@
 import React, { Component } from 'react'
-import jwt_decode from 'jwt-decode'
 
 class Profile extends Component {
   constructor() {
     super()
     this.state = {
-      first_name: '',
-      last_name: '',
+      username: '',
       email: '',
       errors: {}
     }
   }
 
   componentDidMount() {
-    const token = localStorage.usertoken
-    const decoded = jwt_decode(token)
-    this.setState({
-      first_name: decoded.first_name,
-      last_name: decoded.last_name,
-      email: decoded.email
-    })
-  }
+    console.log(this.props.user)
+    if(this.props.user){
+      this.setState({
+        username: this.props.user.username,
+        email: this.props.user.email
+      })
+    }else{
+      this.props.history.push(`/`)
+    }
+}
+  
 
   render() {
     return (
@@ -32,12 +33,8 @@ class Profile extends Component {
           <table className="table col-md-6 mx-auto">
             <tbody>
               <tr>
-                <td>Fist Name</td>
-                <td>{this.state.first_name}</td>
-              </tr>
-              <tr>
-                <td>Last Name</td>
-                <td>{this.state.last_name}</td>
+                <td>Username</td>
+                <td>{this.state.username}</td>
               </tr>
               <tr>
                 <td>Email</td>
