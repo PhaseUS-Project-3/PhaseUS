@@ -62,7 +62,7 @@ class Sprint extends Component {
                 id="backButton"         
                 variant="contained"
                 name="action">   
-                <Link to="/Project">
+                <Link to="/projects">
                     Projects
                 </Link>   
             </Button>

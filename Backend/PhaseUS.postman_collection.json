@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cf5a53b0-9817-41b3-aadb-28c93cee3e63",
+		"_postman_id": "d9e5cafd-5a53-4fc4-bd82-7ec234ebbf2e",
 		"name": "PhaseUS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -414,6 +414,79 @@
 								"sprints",
 								"5ddbde123a925f71e6c6a4c9"
 							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "get all tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a specific task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/projects/5ddbaa4b0b7a9d63ae44a972/sprints/5ddd2a3ff090479ac7398095/task/5dde17403eaf5bbd43dd4921",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"5ddbaa4b0b7a9d63ae44a972",
+								"sprints",
+								"5ddd2a3ff090479ac7398095",
+								"task",
+								"5dde17403eaf5bbd43dd4921"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
 						}
 					},
 					"response": []

@@ -6,7 +6,7 @@ class Project extends Component {
   constructor() {
     super();
         this.state = {
-         projectname: ''
+         name: ''
         }
         this.mySubmitHandler = this.mySubmitHandler.bind(this);
       }
@@ -28,7 +28,7 @@ class Project extends Component {
         console.log(this.props.user)
         if(this.props.user){
           this.setState({
-            projectname: this.props.user.projects.name
+            name: this.props.user.projects.name
           })
         }
       }
@@ -41,7 +41,7 @@ class Project extends Component {
 
   render() {
     console.log(this.state.projectname);
-    if(this.state.projecname !== ''){
+    if(this.state.projectname !== ''){
     //   <Link to="/sprint">
     //  </Link>
     }
@@ -58,19 +58,23 @@ class Project extends Component {
             name='projectname'
              />
         <button className="waves-effect btn-large" id="colorButton" type="submit">
-          {/* <Link to="/sprint">
+          <Link to="/sprint">
             Create Project
-           </Link> */}
+           </Link>
          </button> 
+         </form>
          <br/><br/>
          <br/><br/>
+         <Link to="/profile">
          <button className="waves-effect btn-large" id="colorButton" type="submit" >
-          {/* <Link to="/Sprint">
-            Sprints
-           </Link> */}
+          
+            Back
+           
         </button> 
-     </form>
-          <h1>{this.state.projectname}</h1>
+        </Link>
+        
+     {/* </form> */}
+          <h1>{this.state.name}</h1>
     </div>
  </div>
 
