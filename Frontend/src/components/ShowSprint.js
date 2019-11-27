@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
-class ShowProject extends Component {
+ 
+ class ShowSprint extends Component {
 	constructor(props) {
 		super(props);
 	 
@@ -26,8 +26,8 @@ class ShowProject extends Component {
 		this.setState(curState)
 	  }
 	
-	
-	render() {
+
+    render() {
 		const pnames = ["p1", "p2", "p3", "p3"]
 		let {rows} = this.state 
 		console.log(rows)
@@ -38,14 +38,14 @@ class ShowProject extends Component {
  
 	<table class="table table-striped table-hover user-list fixed-header">
 		<thead>
-			<th><div>	Project Name</div></th>
+			<th><div>	Sprint Name</div></th>
   			{/* <th><div></div></th> */}
 		</thead>
 
 		<tbody>
 		{rows.map((row,i) => 
 			<tr key={i}>
-				<td> {row} <button id="button1" data-id={i} onClick={this.handleDel}>Delete</button>
+				<td> {row} <button  id="button1" data-id={i} onClick={this.handleDel}>Delete</button>
 				 <button id ="button2">  Edit</button></td>
 
 			</tr>
@@ -61,6 +61,5 @@ class ShowProject extends Component {
         )
     
 	}
-		}
-	
-export default ShowProject
+}
+export default ShowSprint

@@ -221,6 +221,17 @@ table.fixed-header  thead tr{
   margin-left: -200px;
 width: 120%
 }
+#button1{
+  float:right;
+   background-color: #e74c3c;
+  width: 12%
+}
+#button2{
+  float:right;
+ 
+  background-color: green;
+  width: 12%
+}
 /* /////////////////////////////////////////////////// */
 
 

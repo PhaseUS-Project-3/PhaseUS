@@ -10,9 +10,10 @@ import Profile from './components/Profile'
 import Project from './components/Project'
 import ProjectPhase from './components/ProjectPhase'
 
-import SprintS from './components/SprintS'
+import ShowSprint from './components/ShowSprint'
 import Sprint from './components/Sprint'
 import ShowProject from './components/ShowProject'
+
 class App extends Component {
   render() {
     return (
@@ -27,7 +28,7 @@ class App extends Component {
             {/* <Route exact path="/CreateSprint" component={CreateSprint} /> */}
             <Route exact path="/Project" component={Project} />
             <Route exact path="/ProjectPhase" component={ProjectPhase} />
-            <Route exact path="/sprints" component={SprintS} />
+            <Route exact path="/ShowSprint" component={ShowSprint} />
             <Route exact path="/Sprint" component={Sprint} />
             <Route exact path="/ShowProject" component={ShowProject} />
 
