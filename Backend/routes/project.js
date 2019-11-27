@@ -8,7 +8,6 @@ const getUserId = require("../auth/utils");
 router.get('/', async (req,res) => {
 	try{
 		const projects = await Projects.find(
-			{owner: getUserId(req)}
 		)//.populate('owner');
 		// projects.forEach(project => project.owner.password = "");
 		res.json({projects});

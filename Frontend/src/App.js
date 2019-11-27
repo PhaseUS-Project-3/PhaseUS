@@ -11,6 +11,8 @@ import Projects from './Components/Projects';
 import Navbar from './Components/Navbar';
 import Profile from './Components/Profile'
 import NotFoundPage from './Components/NotFoundPage';
+import CreateSprint from "./Components/CreateSprint";
+
 
 import { decode }  from 'jsonwebtoken'
 
@@ -45,7 +47,8 @@ export default class App extends React.Component {
     user : null,
     errorMsg : '',
     isAuthenticated : false,
-    hasError : false
+    hasError : false,
+    currentProjectId: null
   }
   loginHandler = async(user) => {
     try{
@@ -63,6 +66,22 @@ export default class App extends React.Component {
       }else{
           return false;
         }
+    }catch(err){
+      let data = {...this.state}
+      data.hasError = true
+      this.setState(data)
+    }
+  }
+  projectHandler = async (projectId) =>{
+    console.log(projectId)
+    try{
+      console.log(projectId)
+      let data = {...this.state}
+      data.currentProjectId = projectId;
+
+      await this.setState(data)
+      return true;
+
     }catch(err){
       let data = {...this.state}
       data.hasError = true
@@ -87,7 +106,7 @@ export default class App extends React.Component {
 
 
   render() {
-          console.log(this.state.user)
+          console.log(this.state)
 
     return (
       <Router>
@@ -99,10 +118,14 @@ export default class App extends React.Component {
             <Route exact path="/login" render={(props) => <Login {...props} loginHandler={this.loginHandler} />} />
 
             {/* {this.state.user? <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />} />: ''} */}
+            <Route exact path="/sprint/:id" render={(props) => <Sprint {...props}/>} />
+            <Route exact path="/createsprint/:projectId/:sprintId" render={(props) => <CreateSprint {...props}/>} />
+
+            {/* <Route exact path="/sprint" render={(props) =>this.state.currentProjectId ? <Sprint {...props} projectId={this.currentProjectId} /> : null } /> */}
             <Route exact path="/profile" render={(props) => this.state.user ? <Profile {...props} user={this.state.user} />: null} />
 
-            <Route exact path="/projects" render={(props) => <Projects {...props} user={this.state.user} />} />           
-            <Route exact path="/sprint" render={(props) => <Sprint {...props} user={this.state.user} />} />  
+            <Route exact path="/projects" render={(props) => <Projects {...props} user={this.state.user} projectHandler={this.projectHandler}/>} />           
+            {/* <Route exact path="/sprint" render={(props) => <Sprint {...props} user={this.state.user} />} />   */}
             <Route component={NotFoundPage} />
           </Switch>
         </div>

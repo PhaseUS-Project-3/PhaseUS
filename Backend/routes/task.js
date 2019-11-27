@@ -59,7 +59,7 @@ router.post('/newtask', async (req, res) => {
 		});
 
 		let savedTask = await newTask.save();
-		res.redirect("/projects/"+projectId+"/sprints/"+sprintId+"/task")
+		res.json(savedTask);
 
 });
 

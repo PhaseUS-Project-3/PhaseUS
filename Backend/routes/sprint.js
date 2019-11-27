@@ -65,7 +65,7 @@ router.post('/newsprint', async (req, res) => {
 		}
 		let savedSprint = await newSprint.save();
 
-		res.redirect("/projects/"+projectId+"/sprints")
+		res.json(savedSprint)
 });
 
 //update a sprint

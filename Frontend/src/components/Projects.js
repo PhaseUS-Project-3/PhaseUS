@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import ShowProject from './ShowProject'
+import { getToken, setToken, logout} from '../services/auth.js'
 
+let header = {
+  headers :{
+    "Content-Type" : "application/json",
+    "Authorization" : `Bearer ${getToken()}`
+  }
+}
 class Project extends Component {
   constructor() {
     super();
         this.state = {
-         name: ''
+         name: '',
+         projects: []
         }
         this.mySubmitHandler = this.mySubmitHandler.bind(this);
       }
@@ -19,21 +28,27 @@ class Project extends Component {
         this.setState({
           projectname : event.target.children[3].value
         })
-        await axios.post("http://localhost:5000/projects/newproject", {name: event.target.children[3].value, sprints: []}).then(res => {
-          console.log(res)
+        await axios.post("http://localhost:5000/projects/newproject", {name: event.target.children[3].value, sprints: []}, header).then(res => {
+          this.props.history.push(`/sprint/`+res.data._id)
         }).catch(e => console.log(e))
 
       }
       componentDidMount(){
         console.log(this.props.user)
         if(this.props.user){
+          axios.get("http://localhost:5000/projects").then(res => {
+          console.log(res.data)
+
           this.setState({
-            name: this.props.user.projects.name
+            name: this.props.user.projects.name,
+            projects: res.data.projects
+            
           })
+        })
         }
+
       }
 
-      //   axios.get("localhost:5000/projects").then(res => console.log(res))
       // }
       // componentDidUpdate(){
       //   axios.get("localhost:5000/projects").then(res => console.log(res))
@@ -58,23 +73,17 @@ class Project extends Component {
             name='projectname'
              />
         <button className="waves-effect btn-large" id="colorButton" type="submit">
-          <Link to="/sprint">
             Create Project
-           </Link>
          </button> 
          </form>
          <br/><br/>
          <br/><br/>
-         <Link to="/profile">
          <button className="waves-effect btn-large" id="colorButton" type="submit" >
           
             Back
            
         </button> 
-        </Link>
-        
-     {/* </form> */}
-          <h1>{this.state.name}</h1>
+        <ShowProject projects={this.state.projects}/>
     </div>
  </div>
 

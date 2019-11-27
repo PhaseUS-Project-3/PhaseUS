@@ -59,6 +59,9 @@ const users = [  { value: 'a', label: 'a' },
         })
 
       }
+      backHandler = () =>{
+        this.props.history.push("/sprint/"+this.props.match.params.projectId);
+      }
 
 
       handleChange = (selectedOptions) => {
@@ -219,10 +222,10 @@ const users = [  { value: 'a', label: 'a' },
       <Button className="waves-effect btn-small"
           id="SendButton"         
           variant="contained"
-          name="action">   
-          <Link to="/Sprint">
-            Back
-           </Link>   
+          name="action"
+          onClick={this.backHandler}>   
+          Back
+  
      </Button>
 
      <Button 

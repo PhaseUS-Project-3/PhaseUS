@@ -16,19 +16,18 @@ class Sprint extends Component {
       }
       mySubmitHandler = (event) => {
         event.preventDefault();
-        
-        console.log(event.target.children[3].value)
-        console.log(this)
-        this.setState({
-          sprinttname : event.target.children[3].value
+        console.log("in handler")
+        const projectId = this.props.match.params.id
+        const name =  event.target.children[3].value
+        axios.post("http://localhost:5000/projects/"+projectId+"/sprints/newsprint", {name: name}).then(res => {
+          console.log(res)
+          this.props.history.push(`/createsprint/`+projectId+"/"+res.data._id)
         })
-        // axios.post("localhost:5001/projects/"+projectid+"/sprints/newsprint", {name: event.target.children[3].value, sprints: []}).then(res => {
-          // console.log(res)
-        // })
 
       }
       componentDidMount(){
-        // axios.get("localhost:5001/projects/"+projectid+"/sprints").then(res => console.log(res))
+        const projectId = this.props.match.params.id
+        axios.get("http://localhost:5000/projects/"+projectId+"/sprints").then(res => console.log(res));
       }
       componentDidUpdate(){
         // axios.get("localhost:5001/projects/"+projectid+"/sprints").then(res => console.log(res))
@@ -36,6 +35,7 @@ class Sprint extends Component {
 
 
   render() {
+    console.log(this.props.projectId)
     return (
   <div className="container">
      <div className="col-sm-8 mx-auto">
@@ -50,9 +50,7 @@ class Sprint extends Component {
     
         
         <Button className="waves-effect btn-large" id="colorButton" type="submit" name="action">
-          <Link to="/createsprint">
             Create Sprint
-           </Link>
         </Button> 
         <br/>
             <br/>
