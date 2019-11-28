@@ -18,6 +18,10 @@ class ShowProject extends Component {
 				rows: []
 			}
 		}
+		state ={
+			rows :[]
+		}
+		row = []
 	handleDeleteRow(i) {
 		let rows = [this.state.rows]
 		rows.splice(i, 1)
@@ -35,8 +39,8 @@ class ShowProject extends Component {
       }
 	  componentDidMount(){
 		  axios.get("http://localhost:5000/projects", header).then(res => {
-          console.log(res.data)
-
+		  console.log(res.data, res.data.projects)
+		  this.row= res.data.projects
           this.setState({
             rows: res.data.projects
             
@@ -48,7 +52,7 @@ class ShowProject extends Component {
 	
 	
 	render() {
-        console.log(this.props.projects)
+        console.log(this.props.projects,this.row)
         return (
 
           
@@ -60,7 +64,7 @@ class ShowProject extends Component {
 		</thead>
 
 		<tbody>
-		{this.props.projects? this.props.projects.map((row,i) => 
+		{this.row? this.row.map((row,i) => 
 			<tr key={i}>
 				<td> {row.name} <button id="button1" data-id={i} onClick={this.handleDel}>Delete</button>
 				</td>
