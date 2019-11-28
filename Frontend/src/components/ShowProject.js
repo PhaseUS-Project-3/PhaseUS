@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+import { getToken, setToken, logout} from '../services/auth.js'
 
+let header = {
+  headers :{
+    "Content-Type" : "application/json",
+    "authorization" : `Bearer ${getToken()}`
+  }
+}
 
 class ShowProject extends Component {
 	constructor(props) {
@@ -26,11 +33,18 @@ class ShowProject extends Component {
 		console.log(e)
         axios.delete("http://localhost:5000/projects/"+pId)
       }
-      componentDidMount(){
+	  componentDidMount(){
+		  axios.get("http://localhost:5000/projects", header).then(res => {
+          console.log(res.data)
+
           this.setState({
-              rows: this.props.projects
+            rows: res.data.projects
+            
           })
-      }
+        })
+        }
+
+    
 	
 	
 	render() {

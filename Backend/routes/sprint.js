@@ -64,7 +64,7 @@ router.post('/newsprint', async (req, res) => {
 			res.status(404).json({message: "Project not found"});
 		}
 		let savedSprint = await newSprint.save();
-
+		console.log(savedSprint)
 		res.json(savedSprint)
 });
 

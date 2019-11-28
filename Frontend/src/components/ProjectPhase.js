@@ -5,6 +5,14 @@
 import '../App.css';
 import Axios from 'axios';
 import { textAlign } from '@material-ui/system';
+import { getToken, setToken, logout} from '../services/auth.js'
+
+let header = {
+  headers :{
+    "Content-Type" : "application/json",
+    "authorization" : `Bearer ${getToken()}`
+  }
+}
  export default class ProjectPhase extends Component {
    state ={
      tasks: []
@@ -17,7 +25,7 @@ import { textAlign } from '@material-ui/system';
         dragula([left, right, center]);
         const projectId = this.props.match.params.projectId
         const sprintId = this.props.match.params.sprintId
-        Axios.get("http://localhost:5000/projects/"+projectId+"/sprints/"+sprintId+"/task/").then(res =>{
+        Axios.get("http://localhost:5000/projects/"+projectId+"/sprints/"+sprintId+"/task", header).then(res =>{
           this.setState({tasks: res.data})
           console.log(res.data.tasks)
     })

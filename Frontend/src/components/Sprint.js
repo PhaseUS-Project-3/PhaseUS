@@ -2,7 +2,14 @@ import React, { Component } from 'react'
  import { Link } from 'react-router-dom'
  import axios from 'axios'
  import Button from '@material-ui/core/Button';
+ import { getToken, setToken, logout} from '../services/auth.js'
 
+ let header = {
+  headers :{
+    "Content-Type" : "application/json",
+    "authorization" : `Bearer ${getToken()}`
+  }
+}
 class Sprint extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +26,7 @@ class Sprint extends Component {
         console.log("in handler")
         const projectId = this.props.match.params.id
         const name =  event.target.children[3].value
-        axios.post("http://localhost:5000/projects/"+projectId+"/sprints/newsprint", {name: name}).then(res => {
+        axios.post("http://localhost:5000/projects/"+projectId+"/sprints/newsprint", {name: name}, header).then(res => {
           console.log(res)
           this.props.history.push(`/taskdata/`+projectId+"/"+res.data._id)
         })
@@ -27,7 +34,7 @@ class Sprint extends Component {
       }
       componentDidMount(){
         const projectId = this.props.match.params.id
-        axios.get("http://localhost:5000/projects/"+projectId+"/sprints").then(res => console.log(res));
+        axios.get("http://localhost:5000/projects/"+projectId+"/sprints",header).then(res => console.log(res));
       }
       componentDidUpdate(){
         // axios.get("localhost:5001/projects/"+projectid+"/sprints").then(res => console.log(res))

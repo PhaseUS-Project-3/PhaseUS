@@ -14,13 +14,16 @@ router.get('/', async (req,res) => {
 	try{
 		//mine
 		const slicedPath = req.originalUrl.split("/sprints/")
+		console.log(slicedPath)
 		const projectId = slicedPath[0].match(/[0-9A-Fa-f]{24}/)[0];
 		const sprintId = slicedPath[1].match(/[0-9A-Fa-f]{24}/)[0];
+
 		console.log(sprintId, projectId)
 		//old
 		const tasks = await Task.find(
 			{project_id: projectId, sprint_id: sprintId}
 		)
+		console.log(tasks)
 		res.json({tasks});
 	}catch(err){
 		res.json({message: err});
@@ -46,7 +49,7 @@ router.post('/newtask', async (req, res) => {
 		const slicedPath = req.originalUrl.split("/sprints/")
 		const projectId = slicedPath[0].match(/[0-9A-Fa-f]{24}/)[0];
 		const sprintId = slicedPath[1].match(/[0-9A-Fa-f]{24}/)[0];
-		let userId = "123456789012345678901234" //getUserId(req); 
+		let userId = getUserId(req); 
 		
 		let newTask = new Task({
             name: req.body.name,
@@ -57,8 +60,9 @@ router.post('/newtask', async (req, res) => {
 			sprint_id: sprintId,
 			project_id: projectId
 		});
-
 		let savedTask = await newTask.save();
+		console.log(savedTask)
+
 		res.json(savedTask);
 
 });

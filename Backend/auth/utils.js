@@ -8,7 +8,7 @@ parseUserId = (jwtToken) => {
 getUserId = (event) => {
   const authorization = event.headers.authorization
   const split = authorization.split(' ')
-  const jwtToken = split[2]
+  const jwtToken = split[1]
 
   return parseUserId(jwtToken)
 }

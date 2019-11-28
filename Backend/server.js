@@ -33,9 +33,9 @@ app.use(session({
  saveUninitialized : true
 }))
 app.use("/auth", authRoutes);
-// app.use('/projects', passport.authenticate('jwt', {session: false}), require('./routes/project'))
-// app.use('/projects/:id/sprints/', passport.authenticate('jwt', {session: false}), require('./routes/sprint'))
-// app.use('/projects/:projectId/sprints/:sprintId/task', passport.authenticate('jwt', {session: false}), require('./routes/task'))
+app.use('/projects', passport.authenticate('jwt', {session: false}), require('./routes/project'))
+app.use('/projects/:id/sprints/', passport.authenticate('jwt', {session: false}), require('./routes/sprint'))
+app.use('/projects/:projectId/sprints/:sprintId/task', passport.authenticate('jwt', {session: false}), require('./routes/task'))
 //passport ininitalied after you session is a must
 app.use(passport.initialize());
 app.use(passport.session());

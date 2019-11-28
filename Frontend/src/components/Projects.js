@@ -7,7 +7,7 @@ import { getToken, setToken, logout} from '../services/auth.js'
 let header = {
   headers :{
     "Content-Type" : "application/json",
-    "Authorization" : `Bearer ${getToken()}`
+    "authorization" : `Bearer ${getToken()}`
   }
 }
 class Project extends Component {
@@ -29,6 +29,7 @@ class Project extends Component {
           projectname : event.target.children[3].value
         })
         await axios.post("http://localhost:5000/projects/newproject", {name: event.target.children[3].value, sprints: []}, header).then(res => {
+          console.log(res)
           this.props.history.push(`/sprint/`+res.data._id)
         }).catch(e => console.log(e))
 
@@ -36,7 +37,7 @@ class Project extends Component {
       componentDidMount(){
         console.log(this.props.user)
         if(this.props.user){
-          axios.get("http://localhost:5000/projects").then(res => {
+          axios.get("http://localhost:5000/projects", header).then(res => {
           console.log(res.data)
 
           this.setState({
@@ -83,7 +84,7 @@ class Project extends Component {
             Back
            
         </button> 
-        <ShowProject projects={this.state.projects}/>
+        <ShowProject />
     </div>
  </div>
 

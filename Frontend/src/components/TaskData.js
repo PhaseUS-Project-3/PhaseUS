@@ -3,7 +3,14 @@ import './comp.css'
 import '../App.css';
 import {Form, Button} from 'react-bootstrap'
 import Axios from 'axios'
+import { getToken, setToken, logout} from '../services/auth.js'
 
+let header = {
+    headers :{
+      "Content-Type" : "application/json",
+      "authorization" : `Bearer ${getToken()}`
+    }
+  }
 export default class SprintData extends Component {
     constructor(props){
         super(props)
@@ -21,7 +28,7 @@ export default class SprintData extends Component {
         const description = e.target.firstChild.children[4].value
         const projectId = this.props.match.params.projectId
         const sprintId = this.props.match.params.sprintId
-        Axios.post("http://localhost:5000/projects/"+projectId+"/sprints/"+sprintId+"/task/newtask", {name, description})
+        Axios.post("http://localhost:5000/projects/"+projectId+"/sprints/"+sprintId+"/task/newtask", {name, description}, header)
         e.target.firstChild.children[1].value = ''
         e.target.firstChild.children[4].value = ''
     }

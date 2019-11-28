@@ -7,7 +7,9 @@ const getUserId = require("../auth/utils");
 // fetch all projects
 router.get('/', async (req,res) => {
 	try{
+		console.log(getUserId(req))
 		const projects = await Projects.find(
+			{owner: getUserId(req)}
 		)//.populate('owner');
 		// projects.forEach(project => project.owner.password = "");
 		res.json({projects});
@@ -34,13 +36,16 @@ router.get('/:projectId', async (req,res) => {
 //create a project
 router.post('/newproject', async (req, res) => {
 	try{
-		const userId = "123456789012345678901234" //getUserId(req);
+		const userId = getUserId(req);
+		console.log(userId)
 		let newProject = new Projects({
 			name: req.body.name,
 			owner: userId,
 			sprints: req.body.sprints
 		});
+
 		savedProject = await newProject.save();
+		console.log(savedProject)
 		await Users.update(
 			{ _id: userId },
 			{ $push: { projects: savedProject._id } }
