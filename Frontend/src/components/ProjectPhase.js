@@ -25,7 +25,7 @@ let header = {
         dragula([left, right, center]);
         const projectId = this.props.match.params.projectId
         const sprintId = this.props.match.params.sprintId
-        Axios.get("http://localhost:5000/projects/"+projectId+"/sprints/"+sprintId+"/task", header).then(res =>{
+        Axios.get("/api/projects/"+projectId+"/sprints/"+sprintId+"/task", header).then(res =>{
           this.setState({tasks: res.data})
           console.log(res.data.tasks)
     })

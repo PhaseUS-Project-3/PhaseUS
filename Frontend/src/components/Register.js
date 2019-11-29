@@ -28,7 +28,7 @@ export default class Register extends React.Component {
     }
     console.log("before sending")
 
-    axios.post("http://localhost:5000/auth/register", newUser).then(res => {
+    axios.post("/api/auth/register", newUser).then(res => {
       console.log(res)
     this.props.history.push(`/login`)
     })

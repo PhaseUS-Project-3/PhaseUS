@@ -12,7 +12,7 @@ export default class SprintData extends Component {
         this.setState({ selectedUsers });
       }
       componentDidMount(){
-          Axios.get("http://localhost:5000/users").then( res => {
+          Axios.get("/api/users").then( res => {
               this.setState({users: res.data})
           })
         }

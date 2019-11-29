@@ -55,7 +55,7 @@ export default class App extends React.Component {
   }
   loginHandler = async(user) => {
     try{
-      const loginStatus = await axios.post('http://localhost:5000/auth/login',user)
+      const loginStatus = await axios.post('/api/auth/login',user)
       if(loginStatus.data.token){
         await setToken(loginStatus.data.token)
 

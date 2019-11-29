@@ -28,7 +28,7 @@ class Project extends Component {
         this.setState({
           projectname : event.target.children[3].value
         })
-        await axios.post("http://localhost:5000/projects/newproject", {name: event.target.children[3].value, sprints: []}, header).then(res => {
+        await axios.post("/api/projects/newproject", {name: event.target.children[3].value, sprints: []}, header).then(res => {
           console.log(res)
           this.props.history.push(`/sprint/`+res.data._id)
         }).catch(e => console.log(e))
@@ -37,7 +37,7 @@ class Project extends Component {
       componentDidMount(){
         console.log(this.props.user)
         if(this.props.user){
-          axios.get("http://localhost:5000/projects", header).then(res => {
+          axios.get("/api/projects", header).then(res => {
           console.log(res.data)
 
           this.setState({

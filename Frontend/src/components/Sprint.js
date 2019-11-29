@@ -26,7 +26,7 @@ class Sprint extends Component {
         console.log("in handler")
         const projectId = this.props.match.params.id
         const name =  event.target.children[3].value
-        axios.post("http://localhost:5000/projects/"+projectId+"/sprints/newsprint", {name: name}, header).then(res => {
+        axios.post("/api/projects/"+projectId+"/sprints/newsprint", {name: name}, header).then(res => {
           console.log(res)
           this.props.history.push(`/taskdata/`+projectId+"/"+res.data._id)
         })
@@ -34,7 +34,7 @@ class Sprint extends Component {
       }
       componentDidMount(){
         const projectId = this.props.match.params.id
-        axios.get("http://localhost:5000/projects/"+projectId+"/sprints",header).then(res => console.log(res));
+        axios.get("/api/projects/"+projectId+"/sprints",header).then(res => console.log(res));
       }
       componentDidUpdate(){
         // axios.get("localhost:5001/projects/"+projectid+"/sprints").then(res => console.log(res))

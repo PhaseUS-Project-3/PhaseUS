@@ -72,21 +72,21 @@ app.use(session({
  resave : false,
  saveUninitialized : true
 }))
-app.use("/auth", authRoutes);
-app.use('/projects', passport.authenticate('jwt', {session: false}), require('./routes/project'))
-app.use('/projects/:id/sprints/', passport.authenticate('jwt', {session: false}), require('./routes/sprint'))
-app.use('/projects/:projectId/sprints/:sprintId/task', passport.authenticate('jwt', {session: false}), require('./routes/task'))
+app.use("/api/auth", authRoutes);
+app.use('/api/projects', passport.authenticate('jwt', {session: false}), require('./routes/project'))
+app.use('/api/projects/:id/sprints/', passport.authenticate('jwt', {session: false}), require('./routes/sprint'))
+app.use('/api/projects/:projectId/sprints/:sprintId/task', passport.authenticate('jwt', {session: false}), require('./routes/task'))
 //passport ininitalied after you session is a must
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/projects", projectsRoutes);
+app.use("/api/projects", projectsRoutes);
 //connect sprint route
-app.use("/projects/:id/sprints/", sprintsRoutes);
-app.use("/users", usersRoutes);
+app.use("/api/projects/:id/sprints/", sprintsRoutes);
+app.use("/api/users", usersRoutes);
 //connect task route
 // app.use("/task", taskRoutes);
-app.use("/projects/:projectId/sprints/:sprintId/task", taskRoutes);
-app.get("*", (req, res) => {
+app.use("/api/projects/:projectId/sprints/:sprintId/task", taskRoutes);
+app.get("/api/*", (req, res) => {
   res.status(404).json({message: "Page not found"});
 });
 // After all routes

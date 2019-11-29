@@ -35,10 +35,10 @@ class ShowProject extends Component {
 		let pId = this.props.projects[id]._id
 		this.props.projects.splice(id, 1)
 		console.log(e)
-        axios.delete("http://localhost:5000/projects/"+pId)
+        axios.delete("/api/projects/"+pId)
       }
 	  componentDidMount(){
-		  axios.get("http://localhost:5000/projects", header).then(res => {
+		  axios.get("/api/projects", header).then(res => {
 		  console.log(res.data, res.data.projects)
 		  this.row= res.data.projects
           this.setState({
