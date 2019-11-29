@@ -8,6 +8,7 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const dotenv = require("dotenv/config");
 
 const passportHelper = require('../helper/passport')
 
@@ -83,7 +84,7 @@ router.post('/login', (request, response) => {
           // generate a signed json web token with the contents of user object and return it in the response
           user.password = '' //remove password
           console.log(user,"login")
-          const token = jwt.sign(user.toJSON(), 'your_jwt_secret', { expiresIn: '1d' });
+          const token = jwt.sign(user.toJSON(), process.env.JWT_SECRET , { expiresIn: '1d' });
           return response.status(200).json({user, token});
         });
     })(request, response);

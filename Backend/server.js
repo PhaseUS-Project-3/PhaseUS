@@ -1,7 +1,26 @@
 const express = require("express");
 const app = express();
+const path = require("path");
+
 var cors = require('cors');
-app.use(cors());
+
+
+var allowedOrigins = ["http://localhost:5000", "http://localhost:3000"];
+
+app.use(
+  cors({
+    origin: function(origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        var message =
+          "The CORS policy for this application does not allow access from origin " +
+          origin;
+        return callback(new Error(message), false);
+      }
+      return callback(null, true);
+    }
+  }))
+
 // const methodOverride = require('method_override');
 const mongoose = require("mongoose");
 const dotenv = require("dotenv/config");
@@ -15,10 +34,31 @@ const projectsRoutes = require("./routes/project");
 const sprintsRoutes = require("./routes/sprint");
 const authRoutes = require("./routes/auth");
 const usersRoutes = require("./routes/users");
-const taskRoutes = require("./routes/task")
+const taskRoutes = require("./routes/task");
+//serves all our static files from the build directory.
+app.use(express.static(path.join(__dirname, "build")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 mongoose.set('useCreateIndex', true);
+
+const PORT = process.env.PORT || 5000;
+// var whitelist = ["http://localhost:5600", "http://example2.com"];
+
+// var corsOptions = {
+//   origin: function(origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       var message =
+//         "The CORS policy for this application does not allow access from origin " +
+//         origin;
+//       callback(new Error(message), false);
+//     }
+//   }
+// };
+
+// app.use(cors(corsOptions));
+
 mongoose.connect(
   process.env.DEV_DB,
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -28,7 +68,7 @@ mongoose.connect(
 );
 //create session for passport
 app.use(session({
- secret : "test",
+ secret : process.env.SECRET,
  resave : false,
  saveUninitialized : true
 }))
@@ -49,4 +89,11 @@ app.use("/projects/:projectId/sprints/:sprintId/task", taskRoutes);
 app.get("*", (req, res) => {
   res.status(404).json({message: "Page not found"});
 });
-app.listen(5000, () => console.log("express running"));
+// After all routes
+// This code essentially serves the index.html file on any unknown routes.
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+console.log(PORT)
+app.listen(PORT, () => console.log("express running"));

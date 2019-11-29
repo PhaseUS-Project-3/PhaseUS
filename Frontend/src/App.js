@@ -3,18 +3,18 @@ import './App.css';
 import axios from 'axios'
 
 import { getToken, setToken, logout} from './services/auth.js'
-import Login from './Components/Login';
+import Login from './components/Login';
 // import SprintData from './Components/SprintData'
-import TaskData from './Components/TaskData'
+import TaskData from './components/TaskData'
 
-import Register from './Components/Register';
-import Landing from './Components/Landing';
-import ProjectPhase from './Components/ProjectPhase';
-import Sprint from './Components/Sprint';
-import Projects from './Components/Projects';
-import Navbar from './Components/Navbar';
-import Profile from './Components/Profile'
-import NotFoundPage from './Components/NotFoundPage';
+import Register from './components/Register';
+import Landing from './components/Landing';
+import ProjectPhase from './components/ProjectPhase';
+import Sprint from './components/Sprint';
+import Projects from './components/Projects';
+import Navbar from './components/Navbar';
+import Profile from './components/Profile'
+import NotFoundPage from './components/NotFoundPage';
 
 
 import { decode }  from 'jsonwebtoken'
